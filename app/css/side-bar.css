@@ -1,0 +1,51 @@
+.side-bar{
+	padding-top: 1%;
+	/*box-shadow: 0 0 3px var(--docks),
+				inset 0 0 1px var(--docks);*/
+	box-sizing: border-box;
+	width: 18%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--rang1);
+}
+.side-bar a{
+	text-decoration: none;
+	color: black;
+}
+.side-bar-head{
+	margin-bottom: 7%;
+}
+
+.side-bar .menu-item a{
+	transition: 0.1s;
+	padding: 5%;
+	width: 100%;
+	display: flex;
+	color: grey;
+	align-items: center;
+}
+.side-bar .menu-item a:hover{
+	transition: 0.1s;
+	background-color: var(--rang4);
+	color: black;
+}
+
+.side-bar .active{
+	background-color: tomato;
+	color: black;
+	background-color: var(--rang4);
+	font-weight: bold;
+}
+.side-bar .active a{
+	color: black;
+}
+
+.side-bar .menu-item a img{
+	width: 10%;
+	margin-right: 5%;
+}
+
+.side-bar{
+	/*background-color: tomato;*/
+}

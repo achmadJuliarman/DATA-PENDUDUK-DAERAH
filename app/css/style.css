@@ -1,0 +1,31 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	width: 100vw;
+	height: 100vh;
+}
+header{
+	background-color: #0F0F12;
+	width: 100%;
+	height: 5%;
+	color: white;
+	display: flex;
+	flex-direction: row;
+}
+header .logout{
+	margin-left: 80%;
+}
+header .app-name{
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+.main-content{
+	width: 100%;
+	height: 95%;
+	display: flex;
+	flex-direction: row;
+}
