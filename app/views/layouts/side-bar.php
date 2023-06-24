@@ -38,6 +38,11 @@ function is_active($page){
 			<ion-icon name="remove-circle-sharp" size="large" class="mx-2"></ion-icon>Data Kematian
 		</a>	
 		</div>
+		<div class="menu-item  <?php is_active('mutasi') ?>">
+		<a href="../mutasi/">
+			<ion-icon name="move-sharp" size="large" class="mx-2"></ion-icon>Data Warga Mutasi
+		</a>	
+		</div>
 		<div class="menu-item  <?php is_active('penyakit-warga') ?>">
 		<a href="../penyakit-warga/">
 			<ion-icon name="heart-half-sharp" size="large" class="mx-2"></ion-icon>Riwayat Penyakit Warga
