@@ -1,6 +1,6 @@
 <?php include_once '../layouts/header.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
-<?php require_once "../../data/warga/data.php" ?>
+<?php require_once "../../functions/warga/data.php" ?>
 <div class="container">
 <table class="table table-hover table-bordered mt-2">
   <thead>
@@ -22,11 +22,12 @@
   </thead>
 
   <tbody>
+  	<?php foreach ($warga as $w) { ?>
     <tr>
       <th scope="row">1</th>
-      <td>3271238712387</td>
-      <td>Achmad Juliarman</td>
-      <td>L</td>
+      <td><?= $w['nik_warga'] ?></td>
+      <td><?= $w['nama_warga'] ?></td>
+      <td><?= $w['jenis_kelamin'] ?></td>
       <td>Otto</td>
       <td>21</td>
       <td>Bandung</td>
@@ -48,6 +49,7 @@
 		</div>
       </td>
     </tr>
+    <?php } ?>
 </table>
 <nav aria-label="Page navigation example">
   <ul class="pagination">
