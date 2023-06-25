@@ -20,19 +20,21 @@ $status_kehidupan = $_POST['status_kehidupan'];
 $kewarganegaraan = $_POST['kewarganegaraan'];
 $gol_dar = $_POST['gol_dar'];
 $kontak = $_POST['kontak'];
-echo $agama;
+
 
 
 try {
+	var_dump($_POST);
 	tambahWarga($_POST);
 	$_SESSION['tambah'] = true;
 	$_SESSION['kode_err'] = '';
-	header('Location: ../../views/warga/');
+	// header('Location: ../../views/warga/');
 } catch (Exception $e) {
 	echo $e->getCode();
 	echo $e->getMessage();
+	var_dump($_POST);
 	$_SESSION['tambah'] = true;
 	$_SESSION['kode_err'] = $e->getCode();
-	header('Location: ../../views/warga/');
+	// header('Location: ../../views/warga/');
 }
  ?>

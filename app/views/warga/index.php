@@ -1,6 +1,5 @@
 <?php include_once '../layouts/header.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
-
 <?php require_once "../../functions/warga/function-crud.php" ?>
 <?php require_once "../../functions/alert.php" ?>
 
@@ -51,14 +50,14 @@ if (isset($_SESSION['tambah'])) {
   	<?php 
 		$jumlahData = count(getAllWarga());
 
-		$jumlahDataPerhalaman = 3;
+		$jumlahDataPerhalaman = 10;
 		$jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
 
 		$halamanAktif = ( isset($_GET['page']) ? $halamanAktif = $_GET['page'] : $halamanAktif = 1);
 
 		$mulaiDari = ($halamanAktif * $jumlahDataPerhalaman) - $jumlahDataPerhalaman;
 
-		var_dump($mulaiDari);
+		// var_dump($mulaiDari);
 		$warga_all = getAllWargaPaginated($mulaiDari, $jumlahDataPerhalaman);
 	?>
 	<!-- end cifguration config -->
@@ -82,8 +81,8 @@ if (isset($_SESSION['tambah'])) {
 		    aksi
 		  </button>
 		  <ul class="dropdown-menu dropdown-menu-dark">
-		  	<li><a class="dropdown-item" href="detail.php">Lihat Detail</a></li>
-		    <li><a class="dropdown-item" href="ubah.php">Ubah</a></li>
+		  	<li><a class="dropdown-item" href="detail.php?nik=<?= $w['nik_warga'] ?>">Lihat Detail</a></li>
+		    <li><a class="dropdown-item" href="ubah.php?nik=<?= $w['nik_warga'] ?>">Ubah</a></li>
 		    <li><hr class="dropdown-divider"></li>
 		    <li><a class="dropdown-item" href="#">Hapus</a></li>
 		  </ul>
