@@ -16,6 +16,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="../../css/colors.css">
 	<link rel="stylesheet" href="../../css/side-bar.css">
+	<link rel="stylesheet" href="../../css/menu.css">
 	<link rel="stylesheet" href="../../css/style.css">
 	<!-- END MY CSS -->
 </head>
