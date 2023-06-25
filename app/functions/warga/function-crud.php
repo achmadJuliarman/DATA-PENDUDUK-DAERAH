@@ -64,6 +64,12 @@ function getJumlahWanita(){
 }
 //==================== END FUNGSI UNTUK TAMPIL DATA
 
+//=-================== START FUNGSI CARI WARGA
+function cariWargaByNIK($keyword){
+	$query = "SELECT * FROM warga WHERE nik_warga = $keyword";
+	return query($query)[0];
+}
+//==================== END FUNGSI CARI WARGA
 
 //==================== FUNGSI TAMBAH DATA WARGA
 function tambahWarga($data){
@@ -120,7 +126,11 @@ function ubahWarga($data){
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE warga
-	SET nik_warga = '$nik', nama_warga = '$nama', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir', ";
+	SET nik_warga = '$nik', nama_warga = '$nama', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir', 
+	alamat_ktp = '$alamat_ktp', alamat_tinggal = '$alamat_tinggal', no_rt = '$rt', no_rw = '$rw', agama = '$agama',  
+	pendidikan_terakhir = '$pendidikan_terakhir', pekerjaan = '$pekerjaan', jenis_kelamin = '$jenis_kelamin',
+	status_perkawinan = '$status_perkawinan', status_warga = '$statuswarga', status_kehidupan = '$status_kehidupan',
+	kewarganegaraan = '$kewarganegaraan', gol_dar = '$gol_dar', kontak = '$kontak', updated_at = '$currentDate'";
  
 	return mysqli_query($conn, $query);
 }
