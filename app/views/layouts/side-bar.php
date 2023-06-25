@@ -15,7 +15,13 @@ function is_active($page){
 <div class="side-bar">
 			
 	<div class="side-bar-head">
-		<div class="menu-item <?php is_active('dashboard') ?>" href="../dashboard">
+		<div class="menu-item <?php is_active('user') ?> my-2 container">
+		<a href="../user/">
+			<ion-icon name="person-circle-outline" size="large" class="mx-2"></ion-icon>Hai, Admin
+		</a>
+		</div>
+		
+		<div class="menu-item <?php is_active('dashboard') ?>">
 		<a href="../dashboard/">
 			<ion-icon name="home-sharp" size="large" class="mx-2"></ion-icon>Dashboard
 		</a>
@@ -23,6 +29,16 @@ function is_active($page){
 	</div>
 			
 	<div class="side-bar-menu">
+		<div class="menu-item  <?php is_active('rt') ?>">
+		<a href="../rt/">
+			<ion-icon name="radio-button-on-outline" size="large" class="mx-2"></ion-icon>RT
+		</a>	
+		</div>
+		<div class="menu-item  <?php is_active('rw') ?>">
+		<a href="../rw/">
+			<ion-icon name="radio-button-on-outline" size="large" class="mx-2"></ion-icon>RW
+		</a>	
+		</div>
 		<div class="menu-item  <?php is_active('warga') ?>">
 		<a href="../warga/">
 			<ion-icon name="accessibility-sharp" size="large" class="mx-2"></ion-icon>Data Warga

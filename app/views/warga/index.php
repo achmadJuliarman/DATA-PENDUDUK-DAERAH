@@ -1,9 +1,32 @@
 <?php include_once '../layouts/header.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
 
-<?php require_once "../../functions/warga/data.php" ?>
+<?php require_once "../../functions/warga/function-crud.php" ?>
+<?php require_once "../../functions/alert.php" ?>
+
+
+
 <div class="container">
-	<?php include_once '../layouts/menu.php' ?>
+<?php 
+
+if (isset($_SESSION['tambah'])) {
+	// var_dump($_SESSION);
+	// die();
+	if ($_SESSION['kode_err'] === 1062) 
+	{
+		alertFailed('tambah', 'warga', 'NIK Sudah Terdaftar');
+	}else if($_SESSION['kode_err'] === '')
+	{
+		alertSuccess('tambah', 'warga');
+	}
+	unset($_SESSION['tambah']);
+	unset($_SESSION['kode_err']);
+}
+	
+
+ ?>
+
+<?php include_once '../layouts/menu.php' ?>
 <table class="table table-hover table-bordered mt-2">
   <thead>
     <tr class="table-dark">
@@ -24,6 +47,22 @@
 
   <tbody>
   	<?php $no = 1; ?>
+  	<!-- pagination config -->
+  	<?php 
+		$jumlahData = count(getAllWarga());
+
+		$jumlahDataPerhalaman = 3;
+		$jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+
+		$halamanAktif = ( isset($_GET['page']) ? $halamanAktif = $_GET['page'] : $halamanAktif = 1);
+
+		$mulaiDari = ($halamanAktif * $jumlahDataPerhalaman) - $jumlahDataPerhalaman;
+
+		var_dump($mulaiDari);
+		$warga_all = getAllWargaPaginated($mulaiDari, $jumlahDataPerhalaman);
+	?>
+	<!-- end cifguration config -->
+
   	<?php foreach ($warga_all as $w) { ?>
     <tr>
       <th scope="row"><?= $no++; ?></th>
@@ -54,19 +93,35 @@
     <?php } ?>
 </table>
 
-<p><b>Pria :</b> <?= $jumlah_pria[0]['jumlah']; ?> </p>
-<p><b>Wanita :</b> <?= $jumlah_wanita[0]['jumlah']; ?> </p>
-<p><b>Lansia :</b> <?= $jumlah_lansia[0]['jumlah']; ?> </p>
-<p><b>Remaja < 18 :</b> <?= $jumlah_remaja[0]['jumlah']; ?> </p>
-<p><b>Dewasa >= 18 :</b> <?= $jumlah_dewasa[0]['jumlah']; ?> </p>
+<div class="data-jumlah-warga d-flex">
+	<p class="mx-2"><b>Pria :</b> <?= getJumlahPria(); ?> </p>
+	<p class="mx-2"><b>Wanita :</b> <?= getJumlahWanita(); ?> </p>
+	<p class="mx-2"><b>Lansia :</b> <?= getJumlahLansia(); ?> </p>
+	<p class="mx-2"><b>Remaja < 18 :</b> <?= getJumlahRemaja(); ?> </p>
+	<p class="mx-2"><b>Dewasa >= 18 :</b> <?= getJumlahDewasa(); ?> </p>
+</div>
+
+<!-- NAVIGATION PAGE -->
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  	<?php if (($halamanAktif-1) != 0) : ?>
+    	<li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif-1 ?>">Previous</a></li>
+	<?php endif; ?>
+
+    <?php for($i=1; $i <= $jumlahHalaman; $i++) : ?>
+    	<li class="page-item">
+    		<?php if ($halamanAktif == $i) : ?>
+    			<a class="page-link active" href="?page=<?= $i ?>"><?= $i ?></a>
+    		<?php else : ?>
+    			<a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+    		<?php endif; ?>
+    	</li>
+    <?php endfor; ?>
+
+    <?php if (($halamanAktif+1) <= $jumlahHalaman) : ?>
+    	<li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif+1 ?>">Next</a></li>
+	<?php endif; ?>
   </ul>
 </nav>
 
