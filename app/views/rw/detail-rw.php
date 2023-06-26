@@ -12,6 +12,7 @@ if (isset($_GET['rw'])) {
 	$rw = 1;
 }
 ?>
+
 <div class="container">
 	<div class="badge bg-primary text-wrap mb-3 mt-4">
 		<h1>RW <?= $rw ?> </h1>
@@ -41,3 +42,4 @@ if (isset($_GET['rw'])) {
 </div>
 </div>
 <?php include_once '../layouts/footer.php' ?>
+

@@ -64,11 +64,11 @@ function is_active($page){
 			<ion-icon name="heart-half-sharp" size="large" class="mx-2"></ion-icon>Riwayat Penyakit Warga
 		</a>	
 		</div>
-		<div class="menu-item  <?php is_active('layanan-kesehatan') ?>">
+		<!-- <div class="menu-item  <?php //is_active('layanan-kesehatan') ?>">
 		<a href="../layanan-kesehatan/">
 			<ion-icon name="medkit-outline" size="large" class="mx-2"></ion-icon>Layanan Kesehatan Sekitar
 		</a>
-		</div>
+		</div> -->
 	</div>
 </div>
 	
