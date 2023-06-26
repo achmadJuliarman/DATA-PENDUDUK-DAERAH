@@ -34,7 +34,7 @@ function is_active($page){
 			<ion-icon name="radio-button-on-outline" size="large" class="mx-2"></ion-icon>RT
 		</a>	
 		</div> -->
-		<div class="menu-item  <?php is_active('rw') ?>">
+		<div class="menu-item  <?php is_active('rw'); is_active('rt') ?>">
 		<a href="../rw/">
 			<ion-icon name="radio-button-on-outline" size="large" class="mx-2"></ion-icon>RW
 		</a>	

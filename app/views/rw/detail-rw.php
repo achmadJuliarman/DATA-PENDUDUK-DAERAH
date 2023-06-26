@@ -5,54 +5,37 @@
 <?php require_once "../../functions/warga/function-crud.php" ?>
 <?php require_once "../../functions/layanan-kesehatan/function-crud.php" ?>
 
-<?php $rw = $_GET['rw'] ?>
-<div class="container d-flex flex-wrap">
-<div class="col mt-3">
-	<div class="badge bg-primary text-wrap mb-3">
-		<h1>RW <?= $_GET['rw'] ?> </h1>
+<?php 
+if (isset($_GET['rw'])) {
+	$rw = $_GET['rw']; 
+}else{
+	$rw = 1;
+}
+?>
+<div class="container">
+	<div class="badge bg-primary text-wrap mb-3 mt-4">
+		<h1>RW <?= $rw ?> </h1>
 	</div>
 	
-	<!-- QUERY DATA RW -->
-	<?php $rt_all = getRtInRw($_GET['rw']); ?>
-	<!-- END QUERY DATA RW -->
-
-	<h2 class="mb-4">Seluruh RT: </h2>
-	
-	<div class="row overflow-auto" style="height: 30vh;">
-	<?php if (empty($rt_all)) : ?>
-		<h1 class="mb-4">Belum Ada Data RT Di RW <?= $_GET['rw'] ?> Yang Ditambahkan</h1>
-	<?php else : ?>
-
-		<?php foreach ($rt_all as $rt) : ?>
-			<div class="col-sm-3 mb-3 mb-sm-0">
-	    		<div class="card mb-4">
-		     		<div class="card-body">
-		       		 <h2 class="card-title">RT <?= $rt['no_rt'] ?></h2>
-		       		 <p class="card-text">Seluruh Data Yang Ada Dari RT <?= $rt['no_rt'] ?> </p>
-		       		 <a href="#" class="btn btn-primary">Lihat</a>
-		      		</div>
-		    	</div>
-		  	</div>
-		<?php endforeach; ?>
-		
-	<?php endif; ?>
-	</div>
-
-	
-		
-
-	<h2 class="mb-4">Layanan Kesehatan : </h2>
-
 	<div class="row">
 		<div class="col-sm-3 mb-3 mb-sm-0">
     		<div class="card mb-4">
 	     		<div class="card-body">
-	       			asdsad
+	       		 <h2 class="card-title">Layanan Kesehatan</h2>
+	       		 <p class="card-text">Seluruh Data Layanan Kesehatan Yang Tersedia di <b>RW <?= $rw ?></b></p>
+	       		 <a href="../layanan-kesehatan/detail.php?rw=<?= $rw ?>" class="btn btn-primary">Lihat</a>
 	      		</div>
 	    	</div>
 	  	</div>
-	</div>
-	
+	  	<div class="col-sm-3 mb-3 mb-sm-0">
+    		<div class="card mb-4">
+	     		<div class="card-body">
+	       		 <h2 class="card-title">Data RT</h2>
+	       		 <p class="card-text">Seluruh Data RT Dari <b>RW <?= $rw ?></b></p>
+	       		 <a href="../rt/index.php?rw=<?= $rw ?>" class="btn btn-primary">Lihat</a>
+	      		</div>
+	    	</div>
+	  	</div>
 </div>
 </div>
 <?php include_once '../layouts/footer.php' ?>

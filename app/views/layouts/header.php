@@ -33,7 +33,7 @@
 <body>
 <header>
 	<div class="app-name" style="height: 100%;">
-		<a href="../dashboard" style="text-decoration: none; color: white;" class="d-flex align-items-center justify-content-center">
+		<a href="../dashboard" style="text-decoration: none; color: white;" class="d-flex align-items-center justify-content-center mx-2">
 			Aplikasi Pendataan Penduduk
 		</a>
 	</div>
