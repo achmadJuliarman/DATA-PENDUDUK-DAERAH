@@ -41,6 +41,15 @@ if (isset($_SESSION['login'])) {
 	    	</div>
 	  	</div>
 	  	<div class="col-sm-3 mb-3 mb-sm-0">
+    		<div class="card mb-4">
+	     		<div class="card-body">
+	       		 <h2 class="card-title">Data RW</h2>
+	       		 <p class="card-text">Seluruh Data RW serta RT</p>
+	       		 <a href="../warga" class="btn btn-primary">Lihat</a>
+	      		</div>
+	    	</div>
+	  	</div>
+	  	<div class="col-sm-3 mb-3 mb-sm-0">
     		<div class="card">
 	     		<div class="card-body">
 	       		 <h2 class="card-title">Data KK / Keluarga</h2>
