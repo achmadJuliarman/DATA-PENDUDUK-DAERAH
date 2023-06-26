@@ -1,6 +1,6 @@
 <?php 
 $conn = mysqli_connect("localhost", "root", '', "data_penduduk");
-
+date_default_timezone_set('Asia/Jakarta');
 function query($query)
 {
 	global $conn;
