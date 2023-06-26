@@ -52,7 +52,10 @@ if (isset($_SESSION['hapus'])) {
 
  ?>
 
+
+
 <?php include_once '../layouts/menu.php' ?>
+<?php include_once '../layouts/form-cari.php'?>
 <table class="table table-hover table-bordered mt-2">
   <thead>
     <tr class="table-dark">
@@ -88,7 +91,18 @@ if (isset($_SESSION['hapus'])) {
 		// var_dump($mulaiDari);
 		$warga_all = getAllWargaPaginated($mulaiDari, $jumlahDataPerhalaman);
 	?>
-	<!-- end cifguration config -->
+	<!-- end pagination config -->
+
+	<!-- FORM CARI HANDLER -->
+	<?php 
+
+	if (isset($_GET['cari'])) {
+		if ($_GET['keyword'] != '') {
+			$warga_all = cariWargaPaginated($_GET['keyword'], $mulaiDari, $jumlahDataPerhalaman);
+		}	
+	}
+
+	 ?>
 
   	<?php foreach ($warga_all as $w) { ?>
     <tr>

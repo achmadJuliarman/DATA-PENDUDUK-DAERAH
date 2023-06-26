@@ -47,4 +47,17 @@ function hapusRw($rw){
 }
 // END FUNCTION HAPUS DATA RW
 
+
+// FUNCTION CARI DATA RW
+function cariRw($keyword){
+
+	$query = "SELECT * FROM rw 
+			  INNER JOIN warga
+			  ON rw.nik_ketua_rw = warga.nik_warga 
+			  WHERE rw.no_rw = '$keyword' OR nik_ketua_rw = '$keyword' 
+			  OR warga.nama_warga LIKE '$keyword%' ";
+
+	return query($query);
+}
+// END FUNCTION CARI DATA RW
 ?>

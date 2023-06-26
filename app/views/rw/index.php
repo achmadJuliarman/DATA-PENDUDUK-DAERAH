@@ -57,10 +57,32 @@ if (isset($_SESSION['hapus'])) {
 
  ?>
 
+<!-- FORM CARI HANDLER -->
+<?php 
+$rw_all = getAllRw();
+
+if (isset($_GET['cari'])) {
+	if ($_GET['keyword'] != '') {
+		$rw_all = cariRw($_GET['keyword']);
+	}	
+}
+
+
+ ?>
+
+
 	<h1 class="mb-4">Data Seluruh RW Terdaftar : </h1>
+
+	<!-- MENU TAMBAH DAN REFRESH -->
 	<?php require_once "../layouts/menu.php" ?>
+	<!-- END MENU TAMBAH -->
+
+	<!-- FORM CARI -->
+	<?php include_once '../layouts/form-cari.php' ?>
+	<!-- END FORM CARI -->
+
 	<div class="row overflow-auto overflow-x-hidden" style="height: 100%;">
-	<?php $rw_all = getAllRw(); ?>
+	 
 	<?php foreach ($rw_all as $rw) : ?>
 		<?php $ketua_rw = cariWargaNIK($rw['nik_ketua_rw']); ?>
 		

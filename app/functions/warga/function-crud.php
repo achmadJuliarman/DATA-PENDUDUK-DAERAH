@@ -153,6 +153,31 @@ function cariWargaNIK($nik){
 	return query($query);
 }
 
+function cariWargaPaginated($keyword, $mulaiDari, $jumlahTampil){
+	$query = "SELECT *, TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS usia FROM warga WHERE 
+	nik_warga LIKE '$keyword%' OR 
+	nama_warga LIKE '$keyword%' OR
+	tempat_lahir LIKE '$keyword%' OR
+	tanggal_lahir LIKE '$keyword%' OR
+	alamat_ktp LIKE '$keyword%' OR
+	alamat_tinggal LIKE '$keyword%' OR
+	no_rt = '$keyword' OR
+	no_rw = '$keyword' OR
+	agama LIKE '$keyword%' OR
+	pendidikan_terakhir LIKE '$keyword' OR
+	pekerjaan LIKE '$keyword%' OR
+	jenis_kelamin LIKE '$keyword' OR
+	status_perkawinan LIKE '$keyword%' OR
+	status_warga LIKE '$keyword%' OR
+	status_kehidupan LIKE '$keyword%' OR
+	kewarganegaraan LIKE '$keyword%' OR
+	gol_darah LIKE '$keyword' OR
+	kontak LIKE '$keyword' LIMIT $mulaiDari, $jumlahTampil";
+
+	return query($query);
+}
+
+
 ?>	
 
 
