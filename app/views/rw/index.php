@@ -106,10 +106,10 @@ if (isset($_GET['cari'])) {
 						
 				</p>
 				<div class="table-group-divider mb-2"></div>
-				<a href="../../functions/rw/hapus.php?rw=<?= $rw['no_rw'] ?>" class="btn btn-danger" style="margin-right: 20px;"
+				<!-- <a href="../../functions/rw/hapus.php?rw=<?= $rw['no_rw'] ?>" class="btn btn-danger" style="margin-right: 20px;"
 					onClick="return confirm('Yakin Hapus Data dengan No RW : <?= $rw['no_rw'] ?>')">
 	       		 	<ion-icon name="trash-outline"></ion-icon> Hapus
-	       		</a>
+	       		</a> -->
 	       		<a href="ubah.php?rw=<?= $rw['no_rw'] ?>&nik=<?= $rw['nik_ketua_rw'] ?>" class="btn btn-success">
 	       			<ion-icon name="create-outline"></ion-icon>Edit
 	       		</a>

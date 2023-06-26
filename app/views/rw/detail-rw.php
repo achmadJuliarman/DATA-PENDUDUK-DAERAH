@@ -23,6 +23,7 @@ if (isset($_GET['rw'])) {
 	     		<div class="card-body">
 	       		 <h2 class="card-title">Layanan Kesehatan</h2>
 	       		 <p class="card-text">Seluruh Data Layanan Kesehatan Yang Tersedia di <b>RW <?= $rw ?></b></p>
+	       		 <p class="card-text">Jumlah : <?= count(getKesehatanInRw($rw)); ?></b></p>
 	       		 <a href="../layanan-kesehatan/detail.php?rw=<?= $rw ?>" class="btn btn-primary">Lihat</a>
 	      		</div>
 	    	</div>
@@ -32,6 +33,7 @@ if (isset($_GET['rw'])) {
 	     		<div class="card-body">
 	       		 <h2 class="card-title">Data RT</h2>
 	       		 <p class="card-text">Seluruh Data RT Dari <b>RW <?= $rw ?></b></p>
+	       		 <p class="card-text">Jumlah : <b><?= count(getRtInRw($rw)); ?></b></p>
 	       		 <a href="../rt/index.php?rw=<?= $rw ?>" class="btn btn-primary">Lihat</a>
 	      		</div>
 	    	</div>

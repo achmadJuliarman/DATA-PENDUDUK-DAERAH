@@ -59,5 +59,11 @@ function cariRw($keyword){
 
 	return query($query);
 }
+
+function cariRwNIK($nik){
+	$query = "SELECT * FROM rw WHERE nik_ketua_rw = '$nik' ";
+
+	return query($query);
+}
 // END FUNCTION CARI DATA RW
 ?>

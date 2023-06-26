@@ -3,37 +3,44 @@
 <?php require_once "../../functions/warga/function-crud.php" ?>
 <?php require_once "../../functions/rt/function-crud.php" ?>
 <?php require_once "../../functions/rw/function-crud.php" ?>
-
 <div class="container">
-	<?php $rw_all = getAllRw(); ?>
 <?php 
-	// harus dibeginikan dulu coy, biar tidak array didalam array
-	$rw = array();
-	for($i=0; $i < count($rw_all); $i++) {
-		$rw = array_column($rw_all, 'no_rw');
+	$rt_all = getRtInRw($_GET['rw']); 
+	$rt = array();
+	for($i=0; $i < count($rt_all); $i++) {
+		$rt = array_column($rt_all, 'no_rt'); // agar tidak [][]
 	}
 
 	$warga = getAllWarga();
-	// var_dump($warga);
+	// var_dump($rt);
+
+if (isset($_GET['rw'])) {
+	$rw = $_GET['rw'];
+	$_SESSION['query-rw'] = $_GET['rw'];
+}else if(isset($_SESSION['query-rw'])){
+	$rw = $_SESSION['query-rw'];
+}else{
+	$rw = 1;
+}
 
  ?>
-
-	<h1 class="mb-3 mt-2">Tambah Data RW</h1>
+<h1 class="mb-3 mt-2">Tambah Data RT Di <b>RW <?= $rw ?></b></h1>
 	<div class="from-wrapper overflow-auto overflow-x-hidden" style="height: 80%; width: 100%;">
-		<form action="../../functions/rw/tambah.php" method="post" class="form-tambah-warga" id="form-tambah">
+		<form action="../../functions/rt/tambah.php" method="post" class="form-tambah-warga" id="form-tambah">
 			<div class="input-group mb-3">	
-				<label class="input-group-text" for="rw">RW</label>
-				<select class="form-select" id="rw" name="rw" required>
-					<option value="0" disabled selected> -- Masukkan No RW --</option>
+				<label class="input-group-text" for="rt">RT</label>
+				<select class="form-select" id="rt" name="rt" required>
+					<option value="0" disabled selected> -- Masukkan No RT --</option>
 					<?php for ($i=1; $i <= 50 ; $i++) : ?>
-						<?php if (!in_array($i, $rw)): ?>	
+						<?php if (!in_array($i, $rt)): ?>	
 					    	<option value="<?= $i ?>" > <?= $i ?> </option>
 						<?php endif ?>
-					<?php endfor; ?>
+	  				<?php endfor; ?>
 				  </select>
 			</div>
+			<input type="hidden" value="<?= $rw ?>" name="rw">
 			<div class="input-group mb-3">	
-				<label class="input-group-text" for="NIK">NIK Ketua RW</label>
+				<label class="input-group-text" for="NIK">NIK Ketua RT</label>
 				<select class="form-select" id="nik" name="nik" required>
 					<option value="0" disabled selected> -- Masukkan NIK Ketua RW --</option>
 					<?php foreach ($warga as $w): ?>
@@ -46,5 +53,6 @@
 	</div>
 </div>
 
-
+	
+</div>
 <?php include_once '../layouts/footer.php' ?>
