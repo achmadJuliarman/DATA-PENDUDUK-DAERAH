@@ -31,7 +31,7 @@
 	<!-- END JQUERY -->
 </head>
 <body>
-<!-- <header>
+<header>
 	<div class="app-name" style="height: 100%;">
 		<a href="../dashboard" style="text-decoration: none; color: white;" class="d-flex align-items-center justify-content-center">
 			Aplikasi Pendataan Penduduk
@@ -44,4 +44,4 @@
 		</a>
 	</div>
 </header>
-<div class="main-content"> -->
+<div class="main-content">
