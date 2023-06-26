@@ -129,12 +129,22 @@ function ubahWarga($data){
 	SET nik_warga = '$nik', nama_warga = '$nama', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir', 
 	alamat_ktp = '$alamat_ktp', alamat_tinggal = '$alamat_tinggal', no_rt = '$rt', no_rw = '$rw', agama = '$agama',  
 	pendidikan_terakhir = '$pendidikan_terakhir', pekerjaan = '$pekerjaan', jenis_kelamin = '$jenis_kelamin',
-	status_perkawinan = '$status_perkawinan', status_warga = '$statuswarga', status_kehidupan = '$status_kehidupan',
-	kewarganegaraan = '$kewarganegaraan', gol_dar = '$gol_dar', kontak = '$kontak', updated_at = '$currentDate'";
+	status_perkawinan = '$status_perkawinan', status_warga = '$status_warga', status_kehidupan = '$status_kehidupan',
+	kewarganegaraan = '$kewarganegaraan', gol_darah = '$gol_dar', kontak = '$kontak', updated_at = '$currentDate' 
+	WHERE nik_warga = '$nik' ";
  
 	return mysqli_query($conn, $query);
 }
 
+// FUNCTION HAPUS DATA WARGA
+function hapusWarga($nik)
+{
+	global $conn;
+	$query = "DELETE FROM warga WHERE nik_warga = '$nik' ";
+
+	return mysqli_query($conn, $query);
+
+}
 
 ?>	
 

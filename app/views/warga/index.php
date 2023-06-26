@@ -1,4 +1,5 @@
 <?php include_once '../layouts/header.php' ?>
+<?php include_once '../layouts/head-bar.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
 <?php require_once "../../functions/warga/function-crud.php" ?>
 <?php require_once "../../functions/alert.php" ?>
@@ -21,6 +22,33 @@ if (isset($_SESSION['tambah'])) {
 	unset($_SESSION['tambah']);
 	unset($_SESSION['kode_err']);
 }
+
+if (isset($_SESSION['ubah'])) {
+	// var_dump($_SESSION);
+	// die();
+	if($_SESSION['kode_err'] === '')
+	{
+		alertSuccess('ubah', 'warga');
+	}else{
+		alertSuccess('ubah', 'warga', 'Terjadi Kesalahan Ketika Mengubah Data');
+	}
+	unset($_SESSION['ubah']);
+	unset($_SESSION['kode_err']);
+}
+	
+if (isset($_SESSION['hapus'])) {
+	// var_dump($_SESSION);
+	// die();
+	if($_SESSION['kode_err'] === '')
+	{
+		alertSuccess('hapus '.$_SESSION['message'], 'warga');
+	}else{
+		alertSuccess('hapus', 'warga', 'Terjadi Kesalahan Ketika Menghapus Data');
+	}
+	unset($_SESSION['hapus']);
+	unset($_SESSION['kode_err']);
+	unset($_SESSION['message']);
+}
 	
 
  ?>
@@ -33,6 +61,7 @@ if (isset($_SESSION['tambah'])) {
       <th scope="col">NIK</th>
       <th scope="col">Nama</th>
       <th scope="col">L/P</th>
+      <th scope="col">Agama</th>
       <th scope="col">RT/RW</th>
       <th scope="col">Usia</th>
       <th scope="col">Pendidikan Terakhir</th>
@@ -50,7 +79,7 @@ if (isset($_SESSION['tambah'])) {
   	<?php 
 		$jumlahData = count(getAllWarga());
 
-		$jumlahDataPerhalaman = 10;
+		$jumlahDataPerhalaman = 8;
 		$jumlahHalaman = ceil($jumlahData / $jumlahDataPerhalaman);
 
 		$halamanAktif = ( isset($_GET['page']) ? $halamanAktif = $_GET['page'] : $halamanAktif = 1);
@@ -68,6 +97,7 @@ if (isset($_SESSION['tambah'])) {
       <td><?= $w['nik_warga'] ?></td>
       <td><?= $w['nama_warga'] ?></td>
       <td><?= $w['jenis_kelamin'] ?></td>
+      <td><?= $w['agama'] ?></td>
       <td><?= $w['no_rt'] ?> / <?= $w['no_rw'] ?></td>
       <td><?= $w['usia'] ?></td>
       <td><?= $w['pendidikan_terakhir'] ?></td>
@@ -84,7 +114,9 @@ if (isset($_SESSION['tambah'])) {
 		  	<li><a class="dropdown-item" href="detail.php?nik=<?= $w['nik_warga'] ?>">Lihat Detail</a></li>
 		    <li><a class="dropdown-item" href="ubah.php?nik=<?= $w['nik_warga'] ?>">Ubah</a></li>
 		    <li><hr class="dropdown-divider"></li>
-		    <li><a class="dropdown-item" href="#">Hapus</a></li>
+		    <li><a class="dropdown-item" href="../../functions/warga/hapus.php?nik=<?= $w['nik_warga'] ?>" 
+		    	onClick="return confirm('Yakin Hapus Data dengan NIK : <?= $w['nik_warga'] ?>')">Hapus</a>
+		    </li>
 		  </ul>
 		</div>
       </td>
