@@ -91,7 +91,7 @@
 				    	<option value="<?= $rw['no_rw'] ?>"><?= $rw['no_rw'] ?></option>
 					<?php endforeach; ?>
 				  </select>
-				</div>
+			</div>
 				
 			<div class="input-group mb-3">	
 				<label class="input-group-text" for="rt">RT</label>

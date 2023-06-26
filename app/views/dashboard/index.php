@@ -2,6 +2,7 @@
 <?php include_once '../layouts/side-bar.php' ?>
 <?php require_once "../../functions/alert.php" ?>
 
+
 <?php 
 if (isset($_SESSION['login'])) {
 		
@@ -10,13 +11,7 @@ if (isset($_SESSION['login'])) {
 ?>
 <!-- myCard -->
 <div class="container d-flex flex-wrap">
-	<?php 
-		if (isset($_SESSION['berhasil'])) {
-			alertSuccessLogin($_SESSION['level']);
-			unset($_SESSION['berhasil']);
-		}
-	 ?>
-
+	
 
 <!-- <div class="card text-bg-info mb-3 mt-2 mx-2" style="max-width: 18rem;">
   <div class="card-header">Header</div>
@@ -28,6 +23,12 @@ if (isset($_SESSION['login'])) {
 
 
 <div class="col mt-3">
+	<?php 
+		if (isset($_SESSION['berhasil'])) {
+			alertSuccessLogin($_SESSION['level']);
+			unset($_SESSION['berhasil']);
+		}
+	 ?>
 	<h1 class="mb-4">Dashboard</h1>
 	<div class="row">
 		<div class="col-sm-3 mb-3 mb-sm-0">

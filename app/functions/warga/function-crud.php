@@ -146,6 +146,13 @@ function hapusWarga($nik)
 
 }
 
+// FUNGSI CARI DATA WARGA
+
+function cariWargaNIK($nik){
+	$query = "SELECT * FROM warga WHERE nik_warga = '$nik' ";
+	return query($query);
+}
+
 ?>	
 
 

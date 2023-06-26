@@ -29,7 +29,7 @@ if (isset($_SESSION['ubah'])) {
 	{
 		alertSuccess('ubah', 'warga');
 	}else{
-		alertSuccess('ubah', 'warga', 'Terjadi Kesalahan Ketika Mengubah Data');
+		alertFailed('ubah', 'warga', 'Terjadi Kesalahan Ketika Mengubah Data');
 	}
 	unset($_SESSION['ubah']);
 	unset($_SESSION['kode_err']);
@@ -42,7 +42,7 @@ if (isset($_SESSION['hapus'])) {
 	{
 		alertSuccess('hapus '.$_SESSION['message'], 'warga');
 	}else{
-		alertSuccess('hapus', 'warga', 'Terjadi Kesalahan Ketika Menghapus Data');
+		alertFailed('hapus', 'warga', 'Terjadi Kesalahan Ketika Menghapus Data');
 	}
 	unset($_SESSION['hapus']);
 	unset($_SESSION['kode_err']);
