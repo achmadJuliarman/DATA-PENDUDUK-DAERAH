@@ -33,14 +33,18 @@ function tambahRt($data){
 // FUNCTION UBAH DATA RT
 function ubahRt($data){
 	global $conn;
-	$no_rt = $data['rt'];
+	$rt_lama = $data['rt-lama'];
+	$no_rt_baru = $data['rt']; // no rt baru
 	$no_rw = $data['rw'];
 	$nik = $data['nik'];
 	$currentDate = date("Y-m-d h:i:sa");
 	
 	$query = "UPDATE rt 
-	SET no_rw = '$no_rw', nik_ketua_rt = '$nik', updated_at = '$currentDate'
-	WHERE no_rt = '$no_rt' ";
+	SET no_rw = '$no_rw', 
+	nik_ketua_rt = '$nik', 
+	updated_at = '$currentDate',
+	no_rt = '$no_rt_baru'
+	WHERE no_rt = '$rt_lama' ";
 
 	return mysqli_query($conn, $query);
 }
@@ -78,5 +82,17 @@ function cariKetuaRt($nik){
 
 	return query($query);
 }
+
+function cariRtTerdaftar($rw){
+	$rt = getRtInRw($rw);
+	$exist = array();
+	for ($i=0; $i < count($rt); $i++) { 
+		$exist = array_column($rt, 'no_rt');
+		// var_dump($exist);
+	}
+	return $exist;
+}
+
+
 // END FUNCTION DATA RT 
 ?>

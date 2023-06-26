@@ -26,11 +26,16 @@ function tambahRw($data){
 // FUNCTION UBAH DATA RW
 function ubahRw($data){
 	global $conn;
+	$rw_lama = $data['rw-lama'];
 	$nik = $data['nik'];
-	$rw = $data['rw'];
+	$rw_baru = $data['rw'];
 	$currentDate = date("Y-m-d h:i:sa");
 
-	$query = "UPDATE rw set nik_ketua_rw = '$nik', updated_at = '$currentDate' WHERE no_rw = '$rw' ";
+	$query = "UPDATE rw 
+	set nik_ketua_rw = '$nik', 
+	updated_at = '$currentDate',
+	no_rw = '$rw_baru' 
+	WHERE no_rw = '$rw_lama' ";
 
 	return mysqli_query($conn, $query);
 }
@@ -60,10 +65,21 @@ function cariRw($keyword){
 	return query($query);
 }
 
-function cariRwNIK($nik){
+function cariKetuaNIK($nik){
 	$query = "SELECT * FROM rw WHERE nik_ketua_rw = '$nik' ";
 
 	return query($query);
 }
+
+function cariRwTerdaftar(){
+	$rw = getAllRw();
+	$exist = array();
+	for ($i=0; $i < count($rw); $i++) { 
+		$exist = array_column($rw, 'no_rw');
+		// var_dump($exist);
+	}
+	return $exist;
+}
+
 // END FUNCTION CARI DATA RW
 ?>

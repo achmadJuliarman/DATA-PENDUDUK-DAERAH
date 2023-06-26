@@ -1,6 +1,7 @@
 <?php include_once '../layouts/header.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
 <?php include_once '../../functions/rt/function-crud.php' ?>
+<?php include_once '../../functions/rw/function-crud.php' ?>
 <?php include_once '../../functions/warga/function-crud.php' ?>
 <?php require_once "../../functions/alert.php" ?>
 
@@ -13,6 +14,10 @@ if (isset($_GET['rw'])) {
 }else{
 	$rw = 1;
 }
+
+// $rw = getAllRw();
+// var_dump($rw);
+// die();
 
 $rt = getRtInRw($rw);
 
@@ -116,8 +121,15 @@ if (isset($_SESSION['hapus'])) {
 	      <th scope="row"><?= $no++; ?></th>
 	      <td><?= $r['no_rw']  ?></td>
 	      <td><?= $r['no_rt']  ?></td>
+	      <?php if (empty($r['nik_ketua_rt'])) : ?>
+	      <td colspan="2">
+	      	  <div class="badge bg-danger text-wrap mb-3">Warning !</div>
+	      	  NIK Ketua RT Belum Ditambahkan
+	      </td>
+	      <?php else : ?>
 	      <td><?= $r['nik_ketua_rt']  ?></td>
 	      <td><?= cariWargaNIK($r['nik_ketua_rt'])[0]['nama_warga'] ?></td>
+	  	  <?php endif; ?>
 	      <td><?= $r['created_at']  ?></td>
 	      <td><?= $r['updated_at']  ?></td>
 	      <td>
