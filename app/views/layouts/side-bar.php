@@ -29,11 +29,11 @@ function is_active($page){
 	</div>
 			
 	<div class="side-bar-menu">
-		<div class="menu-item  <?php is_active('rt') ?>">
+		<!-- <div class="menu-item  <?php // is_active('rt') ?>">
 		<a href="../rt/">
 			<ion-icon name="radio-button-on-outline" size="large" class="mx-2"></ion-icon>RT
 		</a>	
-		</div>
+		</div> -->
 		<div class="menu-item  <?php is_active('rw') ?>">
 		<a href="../rw/">
 			<ion-icon name="radio-button-on-outline" size="large" class="mx-2"></ion-icon>RW
