@@ -13,12 +13,6 @@
 		$rw = array_column($rw_all, 'no_rw');
 	}
 
-	// for ($i=1; $i <= 50 ; $i++) { 
-	// 	if (!in_array($i, $rw)) {
-	// 		echo $i;
-	// 	}
-	// }
-
 
 
  ?>
