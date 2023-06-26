@@ -17,7 +17,7 @@ function is_active($page){
 	<div class="side-bar-head">
 		<div class="menu-item <?php is_active('user') ?> my-2 container">
 		<a href="../user/">
-			<ion-icon name="person-circle-outline" size="large" class="mx-2"></ion-icon>Hai, Admin
+			<ion-icon name="person-circle-outline" size="large" class="mx-2"></ion-icon><?= $_SESSION['level'] ?> , <?= $_SESSION['nama'] ?>
 		</a>
 		</div>
 		

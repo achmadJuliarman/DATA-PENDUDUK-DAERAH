@@ -1,5 +1,11 @@
 <?php 
 	session_start();
+	if (!isset($_SESSION['login'])) {
+		echo "<script>
+			alert('Login Terlebih Dahulu');
+		</script>";
+		header("Location: ../../../login.php");
+	}
  ?>
 <!DOCTYPE html>
 <html lang="en">
