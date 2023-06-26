@@ -1,4 +1,5 @@
 <?php include_once '../layouts/header.php' ?>
+<?php include_once '../layouts/head-bar.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
 <?php require_once "../../functions/warga/function-crud.php" ?>
 <?php require_once "../../functions/rt/function-crud.php" ?>
