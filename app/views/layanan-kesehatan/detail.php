@@ -16,10 +16,15 @@ $lk = getKesehatanInRw($rw);
 // die();
  ?>
 <div class="container">
-	<h1 class="my-4">Layanan Kesehatan Di <b>RW <?= $_GET['rw'] ?></b> </h1>
+	<h1 class="my-4">Layanan Kesehatan Di 
+	<div class="badge bg-primary text-wrap mb-3 mt-4">
+		<b>RW <?= $rw ?></b> 
+	</div>
+	</h1>
 	<div class="row">
 		<?php if (!empty($lk)): ?>
 		<?php foreach ($lk as $l) : ?>
+
 		<div class="col-sm-3 mb-3 mb-sm-0">
     		<div class="card mb-4">
 	     		<div class="card-body">
