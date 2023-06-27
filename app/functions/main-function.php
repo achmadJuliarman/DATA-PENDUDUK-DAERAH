@@ -12,7 +12,8 @@ function query($query)
 	return $rows;
 }
 
+// ini tidak terpakai
+$tanggalNow = date('Y-m-d');
+$currentDateTime = date('Y-m-d h:m:s');
 
-$tanggalnow = date('Y-m-d');
-$tanggalwaktunow = date('Y-m-d h:m:s');
 // echo $tanggalwaktunow;

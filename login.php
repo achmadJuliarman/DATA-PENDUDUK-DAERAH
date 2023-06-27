@@ -17,6 +17,12 @@ require_once 'app/functions/alert.php';
 
 <section class="vh-100 gradient-custom">
 <?php 
+
+// ALERT
+
+
+// var_dump($_SESSION);
+
 if (isset($_POST['login'])) {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
@@ -26,21 +32,41 @@ if (isset($_POST['login'])) {
 	if (!empty($user)) {
 		//cek pass
 		if (strcmp($user[0]['password'], $password) === 0) {
-			$_SESSION['login'] = true;
+      $_SESSION['login'] = true;
+			$_SESSION['id-user'] = $user[0]['id_user'];
 			$_SESSION['nama'] = $user[0]['nama_lengkap'];
 			$_SESSION['berhasil'] = true;
 			$_SESSION['level'] = $user[0]['level_user'];
 			header("Location: app/views/dashboard/");
-		}
-	}
+		}else{
+      $_SESSION['gagal_login'] = true;
+      $_SESSION['kesalahan'] = 'Password Salah';
+    }
+	}else{
+    $_SESSION['gagal_login'] = true;
+    $_SESSION['kesalahan'] = 'Username Tidak Terdaftar';
+  }
+
 } 
+
+// alert 
+
+
 ?>
   <div class="container py-5 h-100">
+    <?php 
+        if (isset($_SESSION['gagal_login'])) {
+          alertFailedLogin($_SESSION['kesalahan']);
+          unset($_SESSION['gagal_login']);
+          unset($_SESSION['kesalahan']);
+        }
+
+     ?>
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-
+           
             <div class="mb-md-5 mt-md-4 pb-5">
 
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>

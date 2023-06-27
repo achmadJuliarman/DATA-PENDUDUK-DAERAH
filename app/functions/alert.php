@@ -25,10 +25,10 @@ echo '<div class="alert alert-success alert-dismissible fade show mt-3" role="al
 		</div>';
 }
 
-function alertFailedLogin()
+function alertFailedLogin($kesalahan)
 {
 	echo '<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" style="margin-left: 16vw; width: 35vw;">
-		  Data <strong>Username Atau Password Salah !</strong>
+		  Login Gagal <strong>'.$kesalahan.' !</strong>
 		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>';
 }

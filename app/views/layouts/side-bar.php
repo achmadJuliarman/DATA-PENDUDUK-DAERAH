@@ -8,19 +8,21 @@ function is_active($page){
 	}
 }
 
+$dir_file = basename(dirname($_SERVER['PHP_SELF'])).'/'.basename($_SERVER['PHP_SELF']);
+
 ?>
 
 
 
 <div class="side-bar">
-			
+			<?php // echo $dir_file; ?>
 	<div class="side-bar-head">
-		<div class="menu-item <?php is_active('user') ?> my-2 container">
-		<a href="../user/">
-			<ion-icon name="person-circle-outline" size="large" class="mx-2"></ion-icon><b class="text-uppercase"><?= $_SESSION['level'] ?></b>, <?= $_SESSION['nama'] ?>
+		<div class="menu-item <?= $dir_file === 'user/profil.php' ? 'active' : '' ?> my-2 container">
+		<a href="../user/profil.php">
+			<ion-icon name="person-circle-outline" size="large" class="mx-2"></ion-icon><b class="text-uppercase"><?= $_SESSION['level'] ?></b> &nbsp <?= $_SESSION['nama'] ?>
 		</a>
 		</div>
-		
+		<!-- <div class="table-group-divider"></div> -->
 		<div class="menu-item <?php is_active('dashboard') ?>">
 		<a href="../dashboard/">
 			<ion-icon name="home-sharp" size="large" class="mx-2"></ion-icon>Dashboard
@@ -69,6 +71,15 @@ function is_active($page){
 			<ion-icon name="medkit-outline" size="large" class="mx-2"></ion-icon>Layanan Kesehatan Sekitar
 		</a>
 		</div>
+		<div class="menu-item mt-3 
+		<?= $dir_file === 'user/index.php' ? 'active' : '' ?> 
+		<?= $dir_file === 'user/tambah.php' ? 'active' : '' ?>
+		<?= $dir_file === 'user/ubah.php' ? 'active' : '' ?> ">
+		<a href="../user/">
+			<ion-icon name="people-circle-outline" size="large" class="mx-2"></ion-icon>Users
+		</a>
+		</div>
+<!-- 		<ion-icon name="people-circle-outline"></ion-icon> -->
 	</div>
 </div>
 	
