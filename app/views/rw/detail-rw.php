@@ -40,6 +40,7 @@ if (isset($_GET['rw'])) {
 	    	</div>
 	  	</div>
 	</div>
+	
 </div>
 <?php include_once '../layouts/footer.php' ?>
 
