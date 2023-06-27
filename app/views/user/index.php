@@ -125,18 +125,18 @@ if (isset($_SESSION['hapus'])) {
   		<?php if ($_SESSION['level'] == 'Admin') : ?>
   		<td align="center">
       	<div class="dropdown">
-		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		    aksi
-		  </button>
-		  <ul class="dropdown-menu dropdown-menu-dark">
-		    <li><a class="dropdown-item" href="ubah.php?id=<?= $user['id_user'] ?> ">Ubah</a></li>
-		    <li><hr class="dropdown-divider"></li>
-		    <li><a class="dropdown-item" href="../../functions/user/hapus.php?id=<?= $user['id_user'] ?>&nama=<?= $user['nama_lengkap'] ?>" 
-		    	onClick="return confirm('Yakin Hapus User Dengan nama : <?= $user['nama_lengkap'] ?> <?= $user['jabatan'] ?>')">Hapus</a>
-		    </li>
-		  </ul>
-		</div>
-      	</td>
+    		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    		    aksi
+    		  </button>
+    		  <ul class="dropdown-menu dropdown-menu-dark">
+    		    <li><a class="dropdown-item" href="ubah.php?id=<?= $user['id_user'] ?> ">Ubah</a></li>
+    		    <li><hr class="dropdown-divider"></li>
+    		    <li><a class="dropdown-item" href="../../functions/user/hapus.php?id=<?= $user['id_user'] ?>&nama=<?= $user['nama_lengkap'] ?>" 
+    		    	onClick="return confirm('Yakin Hapus User Dengan nama : <?= $user['nama_lengkap'] ?> <?= $user['jabatan'] ?>')">Hapus</a>
+    		    </li>
+    		  </ul>
+    		</div>
+        </td>
 
   		<?php endif; ?>
   	</tr>
