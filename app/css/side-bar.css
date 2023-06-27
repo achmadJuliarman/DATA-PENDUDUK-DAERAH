@@ -27,7 +27,7 @@
 }
 .side-bar .menu-item a:hover{
 	transition: 0.1s;
-	background-color: var(--rang4);
+	background-color: var(--rang2);
 	color: black;
 }
 
