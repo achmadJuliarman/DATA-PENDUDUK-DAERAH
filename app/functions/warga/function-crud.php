@@ -79,6 +79,10 @@ function cariWargaByNIK($keyword){
 	$query = "SELECT * FROM warga WHERE nik_warga = $keyword";
 	return query($query)[0];
 }
+function cariWargaByNIK_join($nik){
+	$query = "SELECT * FROM warga INNER JOIN keluarga ON warga.no_kk = keluarga.no_kk WHERE warga.nik_warga = '$nik' ";
+	return query($query)[0];
+}
 //==================== END FUNGSI CARI WARGA
 
 //==================== FUNGSI TAMBAH DATA WARGA
