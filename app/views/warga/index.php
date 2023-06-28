@@ -16,7 +16,7 @@ if (isset($_SESSION['tambah'])) {
 		alertFailed('tambah', 'warga', 'NIK Sudah Terdaftar');
 	}else if($_SESSION['kode_err'] === '')
 	{
-		alertSuccess('tambah', 'warga');
+		alertSuccess('tambah '.$_SESSION['message'], 'warga');
 	}
 	unset($_SESSION['tambah']);
 	unset($_SESSION['kode_err']);
@@ -61,6 +61,8 @@ if (isset($_SESSION['hapus'])) {
     <tr class="table-dark">
       <th scope="col">#</th>
       <th scope="col">NIK</th>
+      <th scope="col">No KK</th>
+      <th scope="col">Status KK</th>
       <th scope="col">Nama</th>
       <th scope="col">L/P</th>
       <th scope="col">Agama</th>
@@ -108,6 +110,8 @@ if (isset($_SESSION['hapus'])) {
     <tr>
       <th scope="row"><?= $no++; ?></th>
       <td><?= $w['nik_warga'] ?></td>
+      <td><?= $w['no_kk'] ?></td>
+      <td><?= $w['status_kk'] ?></td>
       <td><?= $w['nama_warga'] ?></td>
       <td><?= $w['jenis_kelamin'] ?></td>
       <td><?= $w['agama'] ?></td>

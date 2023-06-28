@@ -1,6 +1,7 @@
 <?php include_once '../layouts/header.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
 <?php require_once "../../functions/warga/function-crud.php" ?>
+<?php require_once "../../functions/keluarga/function-crud.php" ?>
 <?php require_once "../../functions/rt/function-crud.php" ?>
 <?php require_once "../../functions/rw/function-crud.php" ?>
 
@@ -10,15 +11,34 @@
 
 <?php $rw_all = getAllRw(); ?>
 <?php $warga_ubah = cariWargaByNIK($_GET['nik']); ?>
+<?php $kk = getAllKeluarga(); ?>
 <div class="container">
 	<?php //var_dump($warga_ubah); die(); ?>
 	<h1 class="mb-3 mt-2">Ubah Data Warga</h1>
 	<div class="from-wrapper overflow-auto overflow-x-hidden" style="height: 80%; width: 100%;">
 		<form action="../../functions/warga/ubah.php" method="post" class="form-ubah-warga" id="form-ubah">
 			<h3>A. Data KTP</h3>
+			<input type="hidden" name="id-updater" value="<?= $_SESSION['id-user'] ?>">
 			<div class="form-floating mb-3">
 				<input type="number" class="form-control" placeholder="nama" name="nik" required value="<?= $warga_ubah['nik_warga'] ?>" readonly>
 				<label for="floatingInputDisabled">NIK</label>
+			</div>
+			<div class="input-group mb-3">	
+			  <label class="input-group-text" for="inputGroupSelect01">No KK</label>
+			  <select class="form-select" id="inputGroupSelect01" name="no_kk">
+			  	<?php foreach ($kk as $k) : ?>
+			   		<option value="<?= $k['no_kk'] ?>" <?= ($k['no_kk'] == $warga_ubah['no_kk']) ? 'selected' : '' ?> > <?= $k['no_kk'] ?> </option>
+			  	<?php endforeach ?>
+			  </select>
+			</div>
+			<div class="input-group mb-3">	
+			  <label class="input-group-text" for="inputGroupSelect01">Status KK</label>
+			  <select class="form-select" id="inputGroupSelect01" name="status_kk">
+			   <option value="Kepala Keluarga" <?= ($warga_ubah['status_kk'] == 'Kepala Keluarga') ? 'selected' : '' ?> >Kepala Keluarga</option>
+			   <option value="Istri" <?= ($warga_ubah['status_kk'] == 'Istri') ? 'selected' : '' ?> >Istri</option>
+			   <option value="Anak" <?= ($warga_ubah['status_kk'] == 'Anak') ? 'selected' : '' ?> >Anak</option>
+			   <option value="Famili Lain" <?= ($warga_ubah['status_kk'] == 'Famili Lain') ? 'selected' : '' ?> >Famili Lain</option>
+			  </select>
 			</div>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" placeholder="nama" name="nama" required value="<?= $warga_ubah['nama_warga'] ?>">

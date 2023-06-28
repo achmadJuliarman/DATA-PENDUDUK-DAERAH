@@ -62,6 +62,16 @@ function getJumlahWanita(){
 
 	return query($query)[0]['jumlah'];
 }
+
+function getWargaByKK($no_kk){
+	$query = "SELECT * FROM warga WHERE no_kk = '$no_kk' ";
+	return query($query);
+}
+
+function getKepalaKeluarga($nik){
+	$query = "SELECT * FROM warga WHERE nik_warga = '$nik' ";
+	return query($query);
+}
 //==================== END FUNGSI UNTUK TAMPIL DATA
 
 //=-================== START FUNGSI CARI WARGA
@@ -74,7 +84,10 @@ function cariWargaByNIK($keyword){
 //==================== FUNGSI TAMBAH DATA WARGA
 function tambahWarga($data){
 	global $conn;
+	$id = $data['id-adder'];
 	$nik = $data['nik'];
+	$no_kk = $_POST['no_kk'];
+	$status_kk = $_POST['status_kk'];
 	$nama = $data['nama'];
 	$tempat_lahir = $data['tempat_lahir'];
 	$tanggal_lahir = $data['tanggal_lahir'];
@@ -95,17 +108,21 @@ function tambahWarga($data){
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO warga 
-	VALUES('$nik', '$nama', '$tempat_lahir', '$tanggal_lahir', 
+	VALUES('$nik', '$no_kk', '$status_kk', '$nama', '$tempat_lahir', '$tanggal_lahir', 
 	'$alamat_ktp', '$alamat_tinggal', '$rt', '$rw', '$agama', 
 	'$pendidikan_terakhir', '$pekerjaan', '$jenis_kelamin', '$status_perkawinan', '$status_warga', 
-	'$status_kehidupan', '$kewarganegaraan', '$gol_dar', '$kontak' , '$currentDate', '')";
+	'$status_kehidupan', '$kewarganegaraan', '$gol_dar', '$kontak' , 
+	'$id', '', '$currentDate', '')";
 
 	return mysqli_query($conn, $query);
 }
 //==================== END FUNGSI TAMBAH DATA WARGA
 function ubahWarga($data){
 	global $conn;
+	$id = $data['id-updater'];
 	$nik = $data['nik'];
+	$no_kk = $_POST['no_kk'];
+	$status_kk = $_POST['status_kk'];
 	$nama = $data['nama'];
 	$tempat_lahir = $data['tempat_lahir'];
 	$tanggal_lahir = $data['tanggal_lahir'];
@@ -130,7 +147,8 @@ function ubahWarga($data){
 	alamat_ktp = '$alamat_ktp', alamat_tinggal = '$alamat_tinggal', no_rt = '$rt', no_rw = '$rw', agama = '$agama',  
 	pendidikan_terakhir = '$pendidikan_terakhir', pekerjaan = '$pekerjaan', jenis_kelamin = '$jenis_kelamin',
 	status_perkawinan = '$status_perkawinan', status_warga = '$status_warga', status_kehidupan = '$status_kehidupan',
-	kewarganegaraan = '$kewarganegaraan', gol_darah = '$gol_dar', kontak = '$kontak', updated_at = '$currentDate' 
+	kewarganegaraan = '$kewarganegaraan', gol_darah = '$gol_dar', kontak = '$kontak', updated_at = '$currentDate',
+	id_updater = '$id', status_kk = '$status_kk', no_kk = '$no_kk' 
 	WHERE nik_warga = '$nik' ";
  
 	return mysqli_query($conn, $query);
@@ -156,6 +174,8 @@ function cariWargaNIK($nik){
 function cariWargaPaginated($keyword, $mulaiDari, $jumlahTampil){
 	$query = "SELECT *, TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS usia FROM warga WHERE 
 	nik_warga LIKE '$keyword%' OR 
+	no_kk LIKE '$keyword%' OR 
+	status_kk LIKE '$keyword%' OR 
 	nama_warga LIKE '$keyword%' OR
 	tempat_lahir LIKE '$keyword%' OR
 	tanggal_lahir LIKE '$keyword%' OR

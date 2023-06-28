@@ -1,10 +1,12 @@
 <?php include_once '../layouts/header.php' ?>
 <?php include_once '../layouts/side-bar.php' ?>
 <?php require_once "../../functions/warga/function-crud.php" ?>
+<?php require_once "../../functions/keluarga/function-crud.php" ?>
 <?php require_once "../../functions/rt/function-crud.php" ?>
 <?php require_once "../../functions/rw/function-crud.php" ?>
 <?php 
 	$rw_all = getAllRw();
+	$kk = getAllKeluarga();
 	// $rt_in_rw = getRtInRw(5);
 	// var_dump($rw_all);
 	// die();
@@ -14,10 +16,27 @@
 	<h1 class="mb-3 mt-2">Tambah Data Warga</h1>
 	<div class="from-wrapper overflow-auto overflow-x-hidden" style="height: 80%; width: 100%;">
 		<form action="../../functions/warga/tambah.php" method="post" class="form-tambah-warga" id="form-tambah">
-			<h3>A. Data KTP</h3>
+			<h3>A. Data KTP & KK</h3>
+			<input type="hidden" name="id-adder" value="<?= $_SESSION['id-user'] ?>">
 			<div class="form-floating mb-3">
 				<input type="number" class="form-control" placeholder="nama" name="nik" required>
 				<label for="floatingInputDisabled">NIK</label>
+			</div>
+			<div class="input-group mb-3">	
+			  <label class="input-group-text" for="inputGroupSelect01">No KK</label>
+			  <select class="form-select" id="inputGroupSelect01" name="no_kk">
+			  	<?php foreach ($kk as $k) : ?>
+			   		<option value="<?= $k['no_kk'] ?>"> <?= $k['no_kk'] ?> </option>
+			  	<?php endforeach ?>
+			  </select>
+			</div>
+			<div class="input-group mb-3">	
+			  <label class="input-group-text" for="inputGroupSelect01">Status KK</label>
+			  <select class="form-select" id="inputGroupSelect01" name="status_kk">
+			   <option value="Istri">Istri</option>
+			   <option value="Anak" selected>Anak</option>
+			   <option value="Famili Lain">Famili Lain</option>
+			  </select>
 			</div>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" placeholder="nama" name="nama" required>

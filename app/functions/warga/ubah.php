@@ -14,7 +14,7 @@ try {
 	echo $e->getMessage();
 	$_SESSION['kode_err'] = $e->getCode();
 	$_SESSION['ubah'] = false;
-	header('Location: ../../views/warga/');
+	// header('Location: ../../views/warga/');
 }
 
 var_dump($_SESSION);
