@@ -3,34 +3,27 @@
 <?php include_once '../../functions/alert.php' ?>
 <?php include_once '../../functions/penyakit-warga/function-crud.php' ?>
 <div class="container">
-	<h1 class="mt-4">Data Riwayat Penyakit Warga</h1>
-
-<?php include_once '../layouts/menu.php' ?>	
-<?php include_once '../layouts/form-cari.php' ?>	
-<?php $penyakit_warga = getWargaBerpenyakit(); ?>
+	
 <?php 
-if (isset($_GET['cari'])) {
-	if (isset($_GET['keyword']) != '') {
-		$penyakit_warga = cariPenyakit($_GET['keyword']);
-	}
+if (!isset($_GET['nik']) && !isset($_GET['nama'])) {
+	header("Location: index.php");
 }
  ?>
-<!-- ALERT -->
 <?php 
-// ALERT TAMBAH
-if (isset($_SESSION['tambah'])) {
+// ALERT UBAH
+if (isset($_SESSION['ubah'])) {
   // var_dump($_SESSION);
   // die();
   if($_SESSION['kode_err'] === '')
   {
-    alertSuccess('tambah', 'Penyakit');
+    alertSuccess('ubah '.$_SESSION['message'], 'Penyakit');
   }else{
-    alertSuccess('tambah', 'Penyakit', 'Terjadi Kesalahan Ketika Menambah Data');
+    alertFailed('ubah', 'Penyakit', 'Terjadi Kesalahan Ketika Mengubah Data '.$_SESSION['message']);
   }
-  unset($_SESSION['tambah']);
+  unset($_SESSION['ubah']);
+  unset($_SESSION['message']);
   unset($_SESSION['kode_err']);
 }
-
 
 // ALERT HAPUS
 if (isset($_SESSION['hapus'])) {
@@ -47,9 +40,25 @@ if (isset($_SESSION['hapus'])) {
   unset($_SESSION['kode_err']);
 }
 
-?>
+ ?>
+
+<?php $penyakit_warga = getPenyakitByNIK($_GET['nik']); ?>
+
+	<h1 class="mt-4">Detail Penyakit Dari Warga</h1> 
+	<h2 class="mt-4">NIK : 
+		<div class="badge bg-info text-wrap sm-2">
+			<h5><?= $_GET['nik'] ?></h5>
+		</div>
+	</h2>
+	<h2>Nama :
+		<div class="badge bg-info text-wrap">
+			<h5><?= $_GET['nama'] ?></h5>
+		</div>
+	</h2>
+
+
 <!-- TABLE DATA -->
-<table class="table table-hover table-bordered mt-2">
+<table class="table table-hover table-bordered mt-4">
 	<thead>
 	    <tr class="table-dark">
 	      <th scope="col">#</th>
@@ -92,14 +101,13 @@ if (isset($_SESSION['hapus'])) {
 			  </button>
 			  <ul class="dropdown-menu dropdown-menu-dark">
 			    <li>
-			    	<a class="dropdown-item" href="detail.php?nik=<?= $pw['nik_penyakit'] ?>&nama=<?= $pw['nama_warga'] ?>">
-			    		Lihat Detail
+			    	<a class="dropdown-item" href="ubah.php?id=<?= $pw['id_penyakit'] ?>">
+			    		ubah
 			    	</a>
 				</li>
 			    <li><hr class="dropdown-divider"></li>
 			    <li><a class="dropdown-item" 
-			    	href="../../functions/penyakit-warga/hapus.php?id=<?= $pw['id_penyakit'] ?>&hapus=semua&nama=<?= $pw['nama_warga'] ?>
-			    	&nik=<?= $pw['nik_penyakit'] ?>"  
+			    	href="../../functions/penyakit-warga/hapus.php?id=<?= $pw['id_penyakit'] ?>&hapus=satu&nama=<?= $pw['nama_warga'] ?>&nik=<?= $pw['nik_penyakit'] ?>" 
 			    	onClick="return confirm('Yakin Hapus Data Penyakit Warga  NIK : <?= $pw['nik_penyakit'] ?> Penyakit : <?= $pw['penyakit'] ?>')">Hapus</a>
 			    </li>
 			  </ul>
@@ -111,7 +119,4 @@ if (isset($_SESSION['hapus'])) {
 </table>
 <!-- END TABLE -->
 </div>
-
-
-
 <?php include_once '../layouts/footer.php' ?>

@@ -124,7 +124,8 @@ if (isset($_SESSION['hapus'])) {
 				</li>
 				<li><hr class="dropdown-divider"></li>
 				<li>
-			    	<a class="dropdown-item" href="../../functions/mutasi/hapus.php?id=<?= $wm['id_mutasi'] ?>&no=<?= $wm['no_kk_mutasi']  ?>">
+			    	<a class="dropdown-item" href="../../functions/mutasi/hapus.php?id=<?= $wm['id_mutasi'] ?>&no=<?= $wm['no_kk_mutasi']  ?>"
+            onClick="return confirm('Yakin Hapus Data Mutasi Dengan NO KK : <?= $wm['no_kk_mutasi'] ?>')">
 			    		hapus
 			    	</a>
 				</li>

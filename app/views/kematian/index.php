@@ -114,7 +114,8 @@ if (isset($_SESSION['hapus'])) {
 		  	<li><a class="dropdown-item" href="ubah.php?id=<?= $w['id_kematian'] ?>">Ubah</a></li>
 		  	<li><hr class="dropdown-divider"></li>
 		  	<li><a class="dropdown-item" 
-		  		href="../../functions/kematian/hapus.php?id=<?= $w['id_kematian'] ?>&nik=<?= $w['nik_kematian'] ?>">
+		  		href="../../functions/kematian/hapus.php?id=<?= $w['id_kematian'] ?>&nik=<?= $w['nik_kematian'] ?>"
+          onClick="return confirm('Yakin Hapus Data Kematian NIK : <?= $w['nik_kematian'] ?>')">
 			  	Hapus</a>
 			</li>
 		  </ul>
