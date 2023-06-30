@@ -14,19 +14,6 @@ function getAllWargaPaginated($mulaiDari, $jumlahTampil){
 
 	return query($query);
 }
-function getWargaHidup(){
-	global $conn;
-	$query = "SELECT *, TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS usia FROM warga WHERE status_kehidupan = 'Hidup' ORDER BY created_at DESC";
-
-	return query($query);
-}
-
-function getWargaMati(){
-	global $conn;
-	$query = "SELECT *, TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS usia FROM warga WHERE status_kehidupan = 'Meninggal' ORDER BY created_at DESC";
-
-	return query($query);
-}
 
 function getJumlahLansia(){
 	global $conn;

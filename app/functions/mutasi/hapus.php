@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once 'function-crud.php';
-// var_dump($_GET);
+var_dump($_GET);
 // die();
 
 try {
