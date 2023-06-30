@@ -3,7 +3,12 @@ session_start();
 require_once 'app/functions/main-function.php';
 require_once 'app/functions/alert.php';
 
+if ($_SESSION['login'] == true) {
+  header("Location: app/views/dashboard/");
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
