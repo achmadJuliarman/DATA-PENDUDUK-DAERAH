@@ -71,7 +71,7 @@ if (isset($_GET['cari'])) {
  ?>
 
 
-	<h1 class="mb-4">Data Seluruh RW Terdaftar : </h1>
+<h1 class="mb-4">Data Seluruh RW Terdaftar : </h1>
 
 	<!-- MENU TAMBAH DAN REFRESH -->
 	<?php require_once "../layouts/menu.php" ?>

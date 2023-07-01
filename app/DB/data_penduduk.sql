@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 05:42 PM
+-- Generation Time: Jul 01, 2023 at 03:46 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -72,9 +72,9 @@ CREATE TABLE `kematian` (
 --
 
 INSERT INTO `kematian` (`id_kematian`, `rw_kematian`, `rt_kematian`, `nik_kematian`, `tanggal_kematian`, `usia_kematian`, `deskripsi_kematian`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '3273051231201002', '2023-06-21', 19, 'Full Senyum Dong', '2023-06-30 11:51:58', '2023-06-30 00:58:03'),
-(4, 0, 1, '3273051231201004', '0000-00-00', 0, '', '2023-06-30 02:41:23', '0000-00-00 00:00:00'),
-(5, 0, 1, '3273051231201004', '0000-00-00', 0, '', '2023-06-30 02:41:50', '0000-00-00 00:00:00');
+(1, 1, 1, '3273051231201002', '2023-06-21', 19, 'Meninggal Karena Umur', '2023-06-30 11:51:58', '2023-07-01 01:40:15'),
+(4, 1, 1, '3273051231201003', '2023-07-12', 70, 'Meninggal Karena Umur', '2023-06-30 02:41:23', '2023-07-01 01:40:03'),
+(5, 1, 1, '3273051231201004', '2023-07-06', 12, 'Meninggal Karena Umur', '2023-06-30 02:41:50', '2023-07-01 01:40:51');
 
 -- --------------------------------------------------------
 
@@ -105,13 +105,39 @@ INSERT INTO `layanan_kesehatan` (`id_layanan`, `nama_layanan`, `jenis_layanan`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `penyakit`
+--
+
+CREATE TABLE `penyakit` (
+  `id_penyakit` int(10) NOT NULL,
+  `nama_penyakit` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penyakit`
+--
+
+INSERT INTO `penyakit` (`id_penyakit`, `nama_penyakit`) VALUES
+(1, 'Jantung'),
+(2, 'Diabetes'),
+(3, 'Stroke'),
+(4, 'Kanker'),
+(5, 'TBC'),
+(6, 'HIV/AIDS'),
+(7, 'Hipertensi'),
+(8, 'Liver'),
+(9, 'Pneumonia / Radang Paru');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `riwayat_penyakit_warga`
 --
 
 CREATE TABLE `riwayat_penyakit_warga` (
-  `id_penyakit` int(10) NOT NULL,
+  `id_penyakit_warga` int(10) NOT NULL,
   `nik_penyakit` varchar(16) NOT NULL,
-  `nama_penyakit` varchar(300) DEFAULT NULL,
+  `id_t_penyakit` int(10) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -120,9 +146,10 @@ CREATE TABLE `riwayat_penyakit_warga` (
 -- Dumping data for table `riwayat_penyakit_warga`
 --
 
-INSERT INTO `riwayat_penyakit_warga` (`id_penyakit`, `nik_penyakit`, `nama_penyakit`, `created_at`, `updated_at`) VALUES
-(5, '3273051231201001', 'Main Bola ', '2023-06-30 14:12:49', '2023-06-30 14:12:51'),
-(6, '3273051231201004', 'Menyebalkan', '2023-06-30 02:43:10', '0000-00-00 00:00:00');
+INSERT INTO `riwayat_penyakit_warga` (`id_penyakit_warga`, `nik_penyakit`, `id_t_penyakit`, `created_at`, `updated_at`) VALUES
+(8, '3273051231201004', 1, '2023-07-01 10:25:26', '2023-07-01 10:25:31'),
+(9, '3273051231201004', 4, '2023-07-01 10:25:42', '2023-07-01 10:25:44'),
+(10, '3273051231201003', 7, '2023-07-01 10:26:02', '2023-07-01 10:26:04');
 
 -- --------------------------------------------------------
 
@@ -145,7 +172,8 @@ CREATE TABLE `rt` (
 
 INSERT INTO `rt` (`id_rt`, `no_rt`, `no_rw`, `nik_ketua_rt`, `created_at`, `updated_at`) VALUES
 (4, 1, 1, '3273051231201002', '2023-06-26 22:15:26', '2023-06-26 22:53:00'),
-(5, 2, 1, '3273051231201002', '2023-06-26 23:18:50', '0000-00-00 00:00:00');
+(5, 2, 1, '3273051231201002', '2023-06-26 23:18:50', '0000-00-00 00:00:00'),
+(6, 5, 2, '3273051231201001', '2023-07-01 13:33:09', '2023-07-01 13:33:09');
 
 -- --------------------------------------------------------
 
@@ -236,7 +264,8 @@ INSERT INTO `warga` (`nik_warga`, `no_kk`, `status_kk`, `nama_warga`, `tempat_la
 ('3273051231201001', '3273051231201234', 'Kepala Keluarga', 'Uung', 'Bandung', '2001-06-27', 'Singkawang Timur', 'Singkawang Barat', 1, 1, 'Kristen', 'SMA', 'Pemulung Bersedih', 'L', 'Kawin', 'Tetap', 'Hidup', 'WNI', 'AB', '081222672843', 1, NULL, '2023-06-27 17:20:18', '0000-00-00 00:00:00'),
 ('3273051231201002', '3273051231201200', 'Anak', 'Agung', 'Bandung', '2002-06-27', 'Singkawang Timur', 'Singkawang Barat', 1, 1, 'Islam', 'SMA', 'Pemulung Handal', 'L', 'Belum Kawin', 'Kontrak', 'Meninggal', 'WNI', 'O', '081222672843', 1, 2, '2023-06-26 22:22:38', '2023-06-28 02:42:23'),
 ('3273051231201003', '3273051231201234', 'Istri', 'Rohman', 'Bandung', '2002-02-21', 'Singkawang Timur', 'Singkawang Barat', 1, 1, 'Islam', 'D1', 'Guru', 'P', 'Kawin', 'Tetap', 'Hidup', 'WNI', 'A', '081222672841', 2, NULL, '2023-06-27 22:54:15', '2023-06-27 22:54:30'),
-('3273051231201004', '3273051231201200', 'Kepala Keluarga', 'Masnung', 'Bandung', '2003-06-24', 'Singkawang Timur', 'Singkawang Barat', 1, 1, 'Islam', 'S1', 'Freelancer', 'L', 'Belum Kawin', 'Tetap', 'Meninggal', 'WNI', 'B', '081222672842', 2, 2, '2023-06-27 23:06:30', '2023-06-28 01:44:12');
+('3273051231201004', '3273051231201200', 'Kepala Keluarga', 'Masnung', 'Bandung', '2003-06-24', 'Singkawang Timur', 'Singkawang Barat', 1, 1, 'Islam', 'S1', 'Freelancer', 'L', 'Belum Kawin', 'Tetap', 'Hidup', 'WNI', 'B', '081222672842', 2, 2, '2023-06-27 23:06:30', '2023-06-28 01:44:12'),
+('3273051231201007', '3273051231201200', 'Anak', 'Rusydi Meregung', 'Bandung', '2023-07-12', 'Kec Andir Kelurahan Ciroyom', 'Kec Andir Kelurahan Ciryom Jakarta Barat', 5, 2, 'Islam', 'SMA', 'Freelancer', 'L', 'Kawin', 'Tetap', 'Hidup', 'WNI', 'O', '081222563376', 1, 0, '2023-07-01 01:37:14', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -294,12 +323,19 @@ ALTER TABLE `layanan_kesehatan`
   ADD KEY `no_rw` (`no_rw`);
 
 --
+-- Indexes for table `penyakit`
+--
+ALTER TABLE `penyakit`
+  ADD PRIMARY KEY (`id_penyakit`);
+
+--
 -- Indexes for table `riwayat_penyakit_warga`
 --
 ALTER TABLE `riwayat_penyakit_warga`
-  ADD PRIMARY KEY (`id_penyakit`),
-  ADD KEY `id_riwayat_penyakit` (`id_penyakit`),
-  ADD KEY `nik_warga` (`nik_penyakit`);
+  ADD PRIMARY KEY (`id_penyakit_warga`),
+  ADD KEY `nik_warga` (`nik_penyakit`),
+  ADD KEY `id_riwayat_penyakit` (`id_penyakit_warga`),
+  ADD KEY `id_t_penyakit` (`id_t_penyakit`);
 
 --
 -- Indexes for table `rt`
@@ -307,7 +343,8 @@ ALTER TABLE `riwayat_penyakit_warga`
 ALTER TABLE `rt`
   ADD PRIMARY KEY (`no_rt`,`id_rt`),
   ADD KEY `no_rw` (`no_rw`),
-  ADD KEY `id_rt` (`id_rt`);
+  ADD KEY `id_rt` (`id_rt`),
+  ADD KEY `nik_ketua_rt` (`nik_ketua_rt`);
 
 --
 -- Indexes for table `rw`
@@ -356,16 +393,22 @@ ALTER TABLE `layanan_kesehatan`
   MODIFY `id_layanan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `penyakit`
+--
+ALTER TABLE `penyakit`
+  MODIFY `id_penyakit` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `riwayat_penyakit_warga`
 --
 ALTER TABLE `riwayat_penyakit_warga`
-  MODIFY `id_penyakit` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_penyakit_warga` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `rt`
 --
 ALTER TABLE `rt`
-  MODIFY `id_rt` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_rt` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -407,13 +450,15 @@ ALTER TABLE `layanan_kesehatan`
 -- Constraints for table `riwayat_penyakit_warga`
 --
 ALTER TABLE `riwayat_penyakit_warga`
-  ADD CONSTRAINT `riwayat_penyakit_warga_ibfk_1` FOREIGN KEY (`nik_penyakit`) REFERENCES `warga` (`nik_warga`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `riwayat_penyakit_warga_ibfk_1` FOREIGN KEY (`nik_penyakit`) REFERENCES `warga` (`nik_warga`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `riwayat_penyakit_warga_ibfk_2` FOREIGN KEY (`id_t_penyakit`) REFERENCES `penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `rt`
 --
 ALTER TABLE `rt`
-  ADD CONSTRAINT `rt_ibfk_1` FOREIGN KEY (`no_rw`) REFERENCES `rw` (`no_rw`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rt_ibfk_1` FOREIGN KEY (`no_rw`) REFERENCES `rw` (`no_rw`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rt_ibfk_2` FOREIGN KEY (`nik_ketua_rt`) REFERENCES `warga` (`nik_warga`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `warga`
