@@ -128,6 +128,20 @@ function cariPenyakitByFilter($keyword, $id){
 
 	return query($query);
 }
+
+function persentasePenyakitByRW($id,$rw){
+	$query1 = "SELECT no_rw as rw , id_t_penyakit as id FROM riwayat_penyakit_warga 
+	INNER JOIN warga ON riwayat_penyakit_warga.nik_penyakit = warga.nik_warga 
+	WHERE no_rw = '$rw' AND id_t_penyakit = '$id' ";
+
+	$query2 = "SELECT * FROM warga WHERE no_rw = '$rw' "; 
+	$jumlahWarga = count(query($query2));
+	$jumlahPenderita = count(query($query1));
+
+	$persentase = ($jumlahPenderita/$jumlahWarga)*100;
+
+	return $persentase;
+}
 // END FUNCTION CARI 
 
  ?>

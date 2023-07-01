@@ -59,6 +59,11 @@ function getKepalaKeluarga($nik){
 	$query = "SELECT * FROM warga WHERE nik_warga = '$nik' ";
 	return query($query);
 }
+
+function getWargaByRw($rw){
+	$query = "SELECT * FROM warga WHERE no_rw = '$rw' ";
+	return query($query);
+}
 //==================== END FUNGSI UNTUK TAMPIL DATA
 
 //=-================== START FUNGSI CARI WARGA
