@@ -11,6 +11,7 @@ if (!isset($_GET['id'])) {
  ?>
 
 <?php $p = getPenyakitById($_GET['id'])[0]; ?>
+<?php //$p = getPenyakitById($_GET['id'])[0]; ?>
 
 
 	<h1 class="mt-4">Ubah Penyakit Warga</h1>
@@ -30,9 +31,25 @@ if (!isset($_GET['id'])) {
 			<input type="text" class="form-control" placeholder="" name="rw" id="rw" required readonly value="<?= $p['no_rw'] ?>/<?= $p['no_rt'] ?>">
 		</div>
 		<div class="input-group mb-3">
-			<span class="input-group-text" id="basic-addon1">Penyakit : </span>
-			<input type="text" class="form-control" placeholder="" name="penyakit" id="penyakit" required value="<?= $p['nama_penyakit'] ?>">
+			<span class="input-group-text" id="basic-addon1">Penyakit Sebelumnya : </span>
+			<input type="text" class="form-control" placeholder="" readonly value="<?= $p['nama_penyakit'] ?>">
 		</div>
+		<p>Ubah Ke :</p>
+		<div class="input-group mb-3" id="list-penyakit">	
+			<label class="input-group-text" for="penyakit">Penyakit : </label>
+			<select class="form-select" id="penyakit" name="penyakit" required >
+				<option value="$p['id_penyakit']" disabled selected> <?= $p['nama_penyakit'] ?> </option>
+			</select>
+		</div>
+		<script>
+			$("#nik").ready(function(){
+				var x = $("#nik").val();
+				xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("GET","ajax/penyakit-ajax.php?no="+x,false);
+				xmlhttp.send(null);
+				$("#list-penyakit").html(xmlhttp.responseText);
+			});
+		</script>
 		<button type="submit" class="btn btn-primary">UBAH</button>
 	</form>
 </div>

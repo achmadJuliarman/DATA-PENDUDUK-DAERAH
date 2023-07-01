@@ -48,6 +48,23 @@ if (isset($_SESSION['hapus'])) {
 }
 
 ?>
+
+<?php $penyakit_all = getAllPenyakit(); ?>
+<div class="dropdown">
+	<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+		Filter
+	</button>
+
+	<ul class="dropdown-menu dropdown-menu-dark">
+		<li><a class="dropdown-item active" href="index.php">All</a></li>
+		<li><hr class="dropdown-divider"></li>
+		<?php foreach ($penyakit_all as $pa): ?>
+			<li>
+				<a class = "dropdown-item" href="filter.php?id=<?= $pa['id_penyakit'] ?>"><?= $pa['nama_penyakit'] ?></a>
+			</li>
+		<?php endforeach ?>
+	</ul>
+</div>
 <!-- TABLE DATA -->
 <table class="table table-hover table-bordered mt-2">
 	<thead>
@@ -98,7 +115,7 @@ if (isset($_SESSION['hapus'])) {
 				</li>
 			    <li><hr class="dropdown-divider"></li>
 			    <li><a class="dropdown-item" 
-			    	href="../../functions/penyakit-warga/hapus.php?id=<?= $pw['id_penyakit'] ?>&hapus=semua&nama=<?= $pw['nama_warga'] ?>
+			    	href="../../functions/penyakit-warga/hapus.php?id=<?= $pw['id_penyakit_warga'] ?>&hapus=semua&nama=<?= $pw['nama_warga'] ?>
 			    	&nik=<?= $pw['nik_penyakit'] ?>"  
 			    	onClick="return confirm('Yakin Hapus Data Penyakit Warga  NIK : <?= $pw['nik_penyakit'] ?> Penyakit : <?= $pw['penyakit'] ?>')">Hapus</a>
 			    </li>

@@ -4,12 +4,13 @@
 <?php include_once '../../functions/warga/function-crud.php' ?>
 
 <?php $warga = getAllWarga(); ?>
+<?php //$penyakit = getPenyakitBelumDiderita($warga['nik_warga']); ?>
 <div class="container">
 
 	<h1 class="mt-4">Tambah Penyakit Warga</h1>
 	<form action="../../functions/penyakit-warga/tambah.php" method="post">
 		<div class="input-group mb-3">	
-			<label class="input-group-text" for="nik">No KK : </label>
+			<label class="input-group-text" for="nik">NIK : </label>
 			<select class="form-select" id="nik" name="nik" required id="nik">
 				<option value="0" disabled selected> -- Pilih NIK --</option>
 				<?php foreach ($warga as $w) : ?>
@@ -25,15 +26,26 @@
 			$("#nik").change(function(){
 				var x = $("#nik").val();
 				xmlhttp = new XMLHttpRequest();
-				xmlhttp.open("GET","rw-rt-ajax.php?no="+x,false);
+				xmlhttp.open("GET","ajax/rw-rt-ajax.php?no="+x,false);
 				xmlhttp.send(null);
 				$("#rw-rt-input").html(xmlhttp.responseText);
 			});
 		</script>
-		<div class="input-group mb-3">
-			<span class="input-group-text" id="basic-addon1">Penyakit : </span>
-			<input type="text" class="form-control" placeholder="" name="penyakit" id="penyakit" required>
+		<div class="input-group mb-3" id="list-penyakit">	
+			<label class="input-group-text" for="penyakit">Penyakit : </label>
+			<select class="form-select" id="penyakit" name="penyakit" required >
+				<option value="0" disabled selected> -- Pilih NIK Terlebih Dahulu--</option>
+			</select>
 		</div>
+		<script>
+			$("#nik").change(function(){
+				var x = $("#nik").val();
+				xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("GET","ajax/penyakit-ajax.php?no="+x,false);
+				xmlhttp.send(null);
+				$("#list-penyakit").html(xmlhttp.responseText);
+			});
+		</script>
 		<button type="submit" class="btn btn-primary">TAMBAH</button>
 	</form>
 </div>
