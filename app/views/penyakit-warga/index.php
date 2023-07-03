@@ -50,20 +50,27 @@ if (isset($_SESSION['hapus'])) {
 ?>
 
 <?php $penyakit_all = getAllPenyakit(); ?>
-<div class="dropdown">
-	<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		Filter
-	</button>
+<div class="list-penyakit d-flex">
+	<div class="dropdown">
+		<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			Filter
+		</button>
 
-	<ul class="dropdown-menu dropdown-menu-dark">
-		<li><a class="dropdown-item active" href="index.php">All</a></li>
-		<li><hr class="dropdown-divider"></li>
-		<?php foreach ($penyakit_all as $pa): ?>
-			<li>
-				<a class = "dropdown-item" href="filter.php?id=<?= $pa['id_penyakit'] ?>"><?= $pa['nama_penyakit'] ?></a>
-			</li>
-		<?php endforeach ?>
-	</ul>
+		<ul class="dropdown-menu dropdown-menu-dark">
+			<li><a class="dropdown-item active" href="index.php">All</a></li>
+			<li><hr class="dropdown-divider"></li>
+			<?php foreach ($penyakit_all as $pa): ?>
+				<li>
+					<a class = "dropdown-item" href="filter.php?id=<?= $pa['id_penyakit'] ?>"><?= $pa['nama_penyakit'] ?></a>
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+	<div class="crud-penyakit mx-3">
+		<a href="list-penyakit.php" class="btn btn-primary">
+			<i data-feather="eye" class="mx-1"></i>Lihat List Penyakit
+		</a>
+	</div>
 </div>
 <!-- TABLE DATA -->
 <table class="table table-hover table-bordered mt-2">

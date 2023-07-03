@@ -48,6 +48,19 @@ function getPenyakitBelumDiderita($nik){
 	$query = "SELECT * FROM penyakit WHERE id_penyakit NOT IN (SELECT id_t_penyakit FROM riwayat_penyakit_warga WHERE nik_penyakit = '$nik')";
 	return query($query);
 }
+function getJumlahPenderita($id){
+	$query = "SELECT *, COUNT(nik_penyakit) AS jumlah FROM riwayat_penyakit_warga
+	INNER JOIN penyakit
+	ON riwayat_penyakit_warga.id_t_penyakit = penyakit.id_penyakit
+	WHERE id_penyakit = '$id'
+	GROUP BY id_penyakit ";
+
+	return query($query);
+}
+function getListPenyakitById($id){
+	$query = "SELECT * FROM penyakit WHERE id_penyakit = '$id' ";
+	return query($query);
+}
 // END FUNCTION TAMPIL DATA
 
 // FUNCTION TAMBAH DATA
@@ -58,6 +71,12 @@ function tambahPenyakit($data){
 	$currentDate = date("Y-m-d h:i:sa");
 	$query = "INSERT INTO riwayat_penyakit_warga VALUES('','$nik','$penyakit','$currentDate','')";
 
+	return mysqli_query($conn, $query);
+}
+function tambahListPenyakit($data){
+	global $conn;
+	$penyakit = $data['penyakit'];
+	$query = "INSERT INTO penyakit VALUES('', '$penyakit')";
 	return mysqli_query($conn, $query);
 }
 // END FUNCTION TAMBAH DATA
@@ -75,6 +94,16 @@ function ubahPenyakit($data){
 
 	return mysqli_query($conn, $query);
 
+}
+function ubahListPenyakit($data){
+	global $conn;
+	$id = $data['id'];
+	$penyakit_lama = $data['penyakit_lama'];
+	$penyakit_baru = $data['penyakit_baru'];
+
+	$query = "UPDATE penyakit SET nama_penyakit = '$penyakit_baru' WHERE id_penyakit = '$id' ";
+
+	return mysqli_query($conn, $query);
 }
 // END FUNCTION UBAH DATA
 
