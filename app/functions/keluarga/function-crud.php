@@ -110,8 +110,7 @@ function hapusKeluarga($no_kk){
 function cariKeluarga($keyword){
 	$query = "SELECT * FROM keluarga WHERE 
 	no_kk LIKE '$keyword%' OR 
-	nik_kk LIKE '$keyword%' OR 
-	status_kk LIKE '%$keyword%' OR 
+	nik_kepala_kk LIKE '$keyword%' OR 
 	alamat_kk LIKE '%$keyword%' OR 
 	no_rt_kk LIKE '$keyword%' OR 
 	no_rw_kk LIKE '$keyword%' ";

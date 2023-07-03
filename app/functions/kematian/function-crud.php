@@ -90,7 +90,8 @@ function hapusKematian($id, $nik){
 
 // FUNCTION CARI DATA
 function cariKematian($keyword){
-	$query = "SELECT * FROM kematian
+	$query = "SELECT *, kematian.created_at as ditambah, kematian.updated_at as diubah
+	FROM kematian
 	INNER JOIN warga 
 	ON kematian.nik_kematian = warga.nik_warga 
 	WHERE 

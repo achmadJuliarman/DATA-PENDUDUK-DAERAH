@@ -1,6 +1,5 @@
 <?php 
 session_start();
-require_once 'app/views/main-function.php';
 require_once 'app/functions/main-function.php';
 require_once 'app/functions/alert.php';
 
