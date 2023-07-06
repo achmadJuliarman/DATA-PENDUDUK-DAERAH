@@ -12,8 +12,8 @@ function getAllRw(){
 // FUNCTION TAMBAH DATA RW
 function tambahRw($data){
 	global $conn;
-	$rw = $data['rw'];
-	$nik = $data['nik'];
+	$rw = htmlspecialchars($data['rw']);
+	$nik = htmlspecialchars($data['nik']);
 	$currentDate = date("Y-m-d h:i:sa");
 	$query = "INSERT INTO rw 
 	values('$rw', '$nik', '$currentDate', '')";
@@ -26,9 +26,9 @@ function tambahRw($data){
 // FUNCTION UBAH DATA RW
 function ubahRw($data){
 	global $conn;
-	$rw_lama = $data['rw-lama'];
-	$nik = $data['nik'];
-	$rw_baru = $data['rw'];
+	$rw_lama = htmlspecialchars($data['rw-lama']);
+	$nik = htmlspecialchars($data['nik']);
+	$rw_baru = htmlspecialchars($data['rw']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE rw 

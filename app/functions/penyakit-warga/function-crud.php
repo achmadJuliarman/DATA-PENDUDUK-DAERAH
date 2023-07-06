@@ -66,8 +66,8 @@ function getListPenyakitById($id){
 // FUNCTION TAMBAH DATA
 function tambahPenyakit($data){
 	global $conn;
-	$nik = $data['nik'];
-	$penyakit = $data['penyakit']; //untuk id_t_penyakit
+	$nik = htmlspecialchars($data['nik']);
+	$penyakit = htmlspecialchars($data['penyakit']); //untuk id_t_penyakit
 	$currentDate = date("Y-m-d h:i:sa");
 	$query = "INSERT INTO riwayat_penyakit_warga VALUES('','$nik','$penyakit','$currentDate','')";
 
@@ -75,7 +75,7 @@ function tambahPenyakit($data){
 }
 function tambahListPenyakit($data){
 	global $conn;
-	$penyakit = $data['penyakit'];
+	$penyakit = htmlspecialchars($data['penyakit']);
 	$query = "INSERT INTO penyakit VALUES('', '$penyakit')";
 	return mysqli_query($conn, $query);
 }
@@ -84,9 +84,9 @@ function tambahListPenyakit($data){
 // FUNCTION UBAH DATA
 function ubahPenyakit($data){
 	global $conn;
-	$id = $data['id-penyakit'];
-	$nik = $data['nik'];
-	$penyakit = $data['penyakit'];
+	$id = htmlspecialchars($data['id-penyakit']);
+	$nik = htmlspecialchars($data['nik']);
+	$penyakit = htmlspecialchars($data['penyakit']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE riwayat_penyakit_warga SET
@@ -97,9 +97,9 @@ function ubahPenyakit($data){
 }
 function ubahListPenyakit($data){
 	global $conn;
-	$id = $data['id'];
-	$penyakit_lama = $data['penyakit_lama'];
-	$penyakit_baru = $data['penyakit_baru'];
+	$id = htmlspecialchars($data['id']);
+	$penyakit_lama = htmlspecialchars($data['penyakit_lama']);
+	$penyakit_baru = htmlspecialchars($data['penyakit_baru']);
 
 	$query = "UPDATE penyakit SET nama_penyakit = '$penyakit_baru' WHERE id_penyakit = '$id' ";
 

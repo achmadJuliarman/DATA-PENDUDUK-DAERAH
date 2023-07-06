@@ -16,11 +16,11 @@ function getKesehatanInRw($rw){
 // FUNCTION TAMBAH DATA LAYANAN KESEHATAN
 function tambahKesehatan($data){
 	global $conn;
-	$nama_l = $data['nama_l'];
-	$jenis_l = $data['jenis_l'];
-	$rw = $data['rw'];
-	$kontak = $data['kontak'];
-	$alamat = $data['alamat'];
+	$nama_l = htmlspecialchars($data['nama_l']);
+	$jenis_l = htmlspecialchars($data['jenis_l']);
+	$rw = htmlspecialchars($data['rw']);
+	$kontak = htmlspecialchars($data['kontak']);
+	$alamat = htmlspecialchars($data['alamat']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO layanan_kesehatan
@@ -34,12 +34,12 @@ function tambahKesehatan($data){
 // FUNCTION UBAH
 function ubahKesehatan($data){
 	global $conn;
-	$id_l = $data['id_l'];
-	$nama_l = $data['nama_l'];
-	$jenis_l = $data['jenis_l'];
-	$rw = $data['rw'];
-	$kontak = $data['kontak'];
-	$alamat = $data['alamat'];
+	$id_l = htmlspecialchars($data['id_l']);
+	$nama_l = htmlspecialchars($data['nama_l']);
+	$jenis_l = htmlspecialchars($data['jenis_l']);
+	$rw = htmlspecialchars($data['rw']);
+	$kontak = htmlspecialchars($data['kontak']);
+	$alamat = htmlspecialchars($data['alamat']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE layanan_kesehatan SET nama_layanan = '$nama_l',

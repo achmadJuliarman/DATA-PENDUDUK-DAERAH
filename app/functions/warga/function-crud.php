@@ -80,27 +80,27 @@ function cariWargaByNIK_join($nik){
 //==================== FUNGSI TAMBAH DATA WARGA
 function tambahWarga($data){
 	global $conn;
-	$id = $data['id-adder'];
-	$nik = $data['nik'];
-	$no_kk = $_POST['no_kk'];
-	$status_kk = $_POST['status_kk'];
-	$nama = $data['nama'];
-	$tempat_lahir = $data['tempat_lahir'];
-	$tanggal_lahir = $data['tanggal_lahir'];
-	$alamat_ktp = $data['alamat_ktp'];
-	$alamat_tinggal = $data['alamat_tinggal'];
-	$rt = $data['rt'];
-	$rw = $data['rw'];
-	$agama = $data['agama'];
-	$pendidikan_terakhir = $data['pendidikan_terakhir'];
-	$pekerjaan = $data['pekerjaan'];
-	$jenis_kelamin = $data['jenis_kelamin'];
-	$status_perkawinan = $data['status_perkawinan'];
-	$status_warga = $data['status_warga'];
-	$status_kehidupan = $data['status_kehidupan'];
-	$kewarganegaraan = $data['kewarganegaraan'];
-	$gol_dar = $data['gol_dar'];
-	$kontak = $data['kontak'];
+	$id = htmlspecialchars($data['id-adder']);
+	$nik = htmlspecialchars($data['nik']);
+	$no_kk = htmlspecialchars($_POST['no_kk']);
+	$status_kk = htmlspecialchars($_POST['status_kk']);
+	$nama = htmlspecialchars($data['nama']);
+	$tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+	$tanggal_lahir = htmlspecialchars($data['tanggal_lahir']);
+	$alamat_ktp = htmlspecialchars($data['alamat_ktp']);
+	$alamat_tinggal = htmlspecialchars($data['alamat_tinggal']);
+	$rt = htmlspecialchars($data['rt']);
+	$rw = htmlspecialchars($data['rw']);
+	$agama = htmlspecialchars($data['agama']);
+	$pendidikan_terakhir = htmlspecialchars($data['pendidikan_terakhir']);
+	$pekerjaan = htmlspecialchars($data['pekerjaan']);
+	$jenis_kelamin = htmlspecialchars($data['jenis_kelamin']);
+	$status_perkawinan = htmlspecialchars($data['status_perkawinan']);
+	$status_warga = htmlspecialchars($data['status_warga']);
+	$status_kehidupan = htmlspecialchars($data['status_kehidupan']);
+	$kewarganegaraan = htmlspecialchars($data['kewarganegaraan']);
+	$gol_dar = htmlspecialchars($data['gol_dar']);
+	$kontak = htmlspecialchars($data['kontak']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO warga 
@@ -115,27 +115,27 @@ function tambahWarga($data){
 //==================== END FUNGSI TAMBAH DATA WARGA
 function ubahWarga($data){
 	global $conn;
-	$id = $data['id-updater'];
-	$nik = $data['nik'];
-	$no_kk = $_POST['no_kk'];
-	$status_kk = $_POST['status_kk'];
-	$nama = $data['nama'];
-	$tempat_lahir = $data['tempat_lahir'];
-	$tanggal_lahir = $data['tanggal_lahir'];
-	$alamat_ktp = $data['alamat_ktp'];
-	$alamat_tinggal = $data['alamat_tinggal'];
-	$rt = $data['rt'];
-	$rw = $data['rw'];
-	$agama = $data['agama'];
-	$pendidikan_terakhir = $data['pendidikan_terakhir'];
-	$pekerjaan = $data['pekerjaan'];
-	$jenis_kelamin = $data['jenis_kelamin'];
-	$status_perkawinan = $data['status_perkawinan'];
-	$status_warga = $data['status_warga'];
-	$status_kehidupan = $data['status_kehidupan'];
-	$kewarganegaraan = $data['kewarganegaraan'];
-	$gol_dar = $data['gol_dar'];
-	$kontak = $data['kontak'];
+	$id = htmlspecialchars($data['id-updater']);
+	$nik = htmlspecialchars($data['nik']);
+	$no_kk = htmlspecialchars($_POST['no_kk']);
+	$status_kk = htmlspecialchars($_POST['status_kk']);
+	$nama = htmlspecialchars($data['nama']);
+	$tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+	$tanggal_lahir = htmlspecialchars($data['tanggal_lahir']);
+	$alamat_ktp = htmlspecialchars($data['alamat_ktp']);
+	$alamat_tinggal = htmlspecialchars($data['alamat_tinggal']);
+	$rt = htmlspecialchars($data['rt']);
+	$rw = htmlspecialchars($data['rw']);
+	$agama = htmlspecialchars($data['agama']);
+	$pendidikan_terakhir = htmlspecialchars($data['pendidikan_terakhir']);
+	$pekerjaan = htmlspecialchars($data['pekerjaan']);
+	$jenis_kelamin = htmlspecialchars($data['jenis_kelamin']);
+	$status_perkawinan = htmlspecialchars($data['status_perkawinan']);
+	$status_warga = htmlspecialchars($data['status_warga']);
+	$status_kehidupan = htmlspecialchars($data['status_kehidupan']);
+	$kewarganegaraan = htmlspecialchars($data['kewarganegaraan']);
+	$gol_dar = htmlspecialchars($data['gol_dar']);
+	$kontak = htmlspecialchars($data['kontak']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE warga

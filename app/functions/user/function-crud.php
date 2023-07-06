@@ -23,16 +23,15 @@ function getUserById($id){
 // FUNCTION TAMBAH DATA USER
 function tambahUser($data){
 	global $conn;
-	global $currentDateTime;
-	$level = $data['level'];
-	$jabatan = $data['jabatan'];
-	$username = $data['username'];
-	$nama = $data['nama'];
+	$level = htmlspecialchars($data['level']);
+	$jabatan = htmlspecialchars($data['jabatan']);
+	$username = htmlspecialchars($data['username']);
+	$nama = htmlspecialchars($data['nama']);
 	$password = $data['password'];
-
+	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO users 
-	VALUES('', '$level', '$jabatan', '$nama', '$username',  '$password', '$currentDateTime', '')";
+	VALUES('', '$level', '$jabatan', '$nama', '$username',  '$password', '$currentDate', '')";
 
 	return mysqli_query($conn, $query);
 }
@@ -43,11 +42,11 @@ function tambahUser($data){
 function ubahUser($data){
 	global $conn;
 	$currentDate = date("Y-m-d h:i:sa");
-	$level = $data['level'];
-	$username = $data['username'];
-	$nama = $data['nama'];
-	$password = $data['password'];
-	$id = $data['id'];
+	$level = htmlspecialchars($data['level']);
+	$username = htmlspecialchars($data['username']);
+	$nama = htmlspecialchars($data['nama']);
+	$password = htmlspecialchars($data['password']);
+	$id = htmlspecialchars($data['id']);
 
 	$query = "UPDATE users SET
 	nama_lengkap = '$nama',

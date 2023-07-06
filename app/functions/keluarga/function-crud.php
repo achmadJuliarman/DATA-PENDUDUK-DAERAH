@@ -34,14 +34,14 @@ function getAnggotaKeluargaByNo($no){
 // FUNCTION TAMBAH DATA
 function tambahKeluarga($data){
 	global $conn;
-	$id = $data['id-adder'];
-	$no_kk = $data['no_kk'];
-	$nik = $data['nik'];
-	$alamat = $data['alamat'];
-	$kecamatan = $data['kecamatan'];
-	$kelurahan = $data['kelurahan'];
-	$rw = $data['rw'];
-	$rt = $data['rt'];
+	$id = htmlspecialchars($data['id-adder']);
+	$no_kk = htmlspecialchars($data['no_kk']);
+	$nik = htmlspecialchars($data['nik']);
+	$alamat = htmlspecialchars($data['alamat']);
+	$kecamatan = htmlspecialchars($data['kecamatan']);
+	$kelurahan = htmlspecialchars($data['kelurahan']);
+	$rw = htmlspecialchars($data['rw']);
+	$rt = htmlspecialchars($data['rt']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO keluarga 
@@ -61,16 +61,16 @@ function tambahKeluarga($data){
 // FUNCTION UBAH DATA
 function ubahKeluarga($data){
 	global $conn;
-	$id = $data['id-updater'];
-	$no_kk_lama = $data['kk-lama'];
-	$nik_lama = $data['nik-lama'];
-	$no_kk = $data['kk-baru'];
-	$nik = $data['nik-baru'];
-	$alamat = $data['alamat'];
-	$kecamatan = $data['kecamatan'];
-	$kelurahan = $data['kelurahan'];
-	$rw = $data['rw'];
-	$rt = $data['rt'];
+	$id = htmlspecialchars($data['id-updater']);
+	$no_kk_lama = htmlspecialchars($data['kk-lama']);
+	$nik_lama = htmlspecialchars($data['nik-lama']);
+	$no_kk = htmlspecialchars($data['kk-baru']);
+	$nik = htmlspecialchars($data['nik-baru']);
+	$alamat = htmlspecialchars($data['alamat']);
+	$kecamatan = htmlspecialchars($data['kecamatan']);
+	$kelurahan = htmlspecialchars($data['kelurahan']);
+	$rw = htmlspecialchars($data['rw']);
+	$rt = htmlspecialchars($data['rt']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	if ($nik_lama != $nik) {

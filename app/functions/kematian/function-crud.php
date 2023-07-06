@@ -35,12 +35,12 @@ function getWargaHidup(){
 // FUNCTION TAMBAH DATA
 function tambahKematian($data){
 	global $conn;
-	$nik = $data['nik'];
-	$rw = $data['rw'];
-	$rt = $data['rt'];
-	$tanggal = $data['tanggal'];
-	$usia = $data['usia'];
-	$deskripsi = $data['deskripsi'];
+	$nik = htmlspecialchars($data['nik']);
+	$rw = htmlspecialchars($data['rw']);
+	$rt = htmlspecialchars($data['rt']);
+	$tanggal = htmlspecialchars($data['tanggal']);
+	$usia = htmlspecialchars($data['usia']);
+	$deskripsi = htmlspecialchars($data['deskripsi']);
 	$currentDate = date("Y-m-d h:i:sa");
 	$query2 = "UPDATE warga SET status_kehidupan = 'Meninggal' WHERE nik_warga = '$nik' ";
 	mysqli_query($conn, $query2);
@@ -55,13 +55,13 @@ function tambahKematian($data){
 // FUNCTION UBAH DATA
 function ubahKematian($data){
 	global $conn;
-	$id = $data['id'];
-	$nik = $data['nik'];
-	$rw = $data['rw'];
-	$rt = $data['rt'];
-	$tanggal = $data['tanggal'];
-	$usia = $data['usia'];
-	$deskripsi = $data['deskripsi'];
+	$id = htmlspecialchars($data['id']);
+	$nik = htmlspecialchars($data['nik']);
+	$rw = htmlspecialchars($data['rw']);
+	$rt = htmlspecialchars($data['rt']);
+	$tanggal = htmlspecialchars($data['tanggal']);
+	$usia = htmlspecialchars($data['usia']);
+	$deskripsi = htmlspecialchars($data['deskripsi']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE kematian SET

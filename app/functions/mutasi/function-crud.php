@@ -23,13 +23,13 @@ function getKeluargaNonMutasi(){
 // FUNCTION TAMBAH DATA
 function tambahMutasi($data){
 	global $conn;
-	$no_kk = $data['no_kk'];
-	$rw = $data['rw'];
-	$rt = $data['rt'];
-	$nik = $data['nik'];
-	$nama = $data['nama'];
-	$alamat = $data['alamat'];
-	$tanggal_mutasi = $data['tanggal_mutasi'];
+	$no_kk = htmlspecialchars($data['no_kk']);
+	$rw = htmlspecialchars($data['rw']);
+	$rt = htmlspecialchars($data['rt']);
+	$nik = htmlspecialchars($data['nik']);
+	$nama = htmlspecialchars($data['nama']);
+	$alamat = htmlspecialchars($data['alamat']);
+	$tanggal_mutasi = htmlspecialchars($data['tanggal_mutasi']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO warga_mutasi 
@@ -42,14 +42,14 @@ function tambahMutasi($data){
 // FUNCTION UBAH DATA
 function ubahMutasi($data){
 	global $conn;
-	$id = $data['id'];
-	$no_kk = $data['no_kk'];
-	$rw = $data['rw'];
-	$rt = $data['rt'];
-	$nik = $data['nik'];
-	$nama = $data['nama'];
-	$alamat = $data['alamat'];
-	$tanggal_mutasi = $data['tanggal_mutasi'];
+	$id = htmlspecialchars($data['id']);
+	$no_kk = htmlspecialchars($data['no_kk']);
+	$rw = htmlspecialchars($data['rw']);
+	$rt = htmlspecialchars($data['rt']);
+	$nik = htmlspecialchars($data['nik']);
+	$nama = htmlspecialchars($data['nama']);
+	$alamat = htmlspecialchars($data['alamat']);
+	$tanggal_mutasi = htmlspecialchars($data['tanggal_mutasi']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "UPDATE warga_mutasi SET

@@ -17,9 +17,9 @@ function getRtInRw($rw){
 // FUNCTION TAMBAH DATA RT
 function tambahRt($data){
 	global $conn;
-	$no_rt = $data['rt'];
-	$no_rw = $data['rw'];
-	$nik = $data['nik'];
+	$no_rt = htmlspecialchars($data['rt']);
+	$no_rw = htmlspecialchars($data['rw']);
+	$nik = htmlspecialchars($data['nik']);
 	$currentDate = date("Y-m-d h:i:sa");
 
 	$query = "INSERT INTO rt 
@@ -33,10 +33,10 @@ function tambahRt($data){
 // FUNCTION UBAH DATA RT
 function ubahRt($data){
 	global $conn;
-	$rt_lama = $data['rt-lama'];
-	$no_rt_baru = $data['rt']; // no rt baru
-	$no_rw = $data['rw'];
-	$nik = $data['nik'];
+	$rt_lama = htmlspecialchars($data['rt-lama']);
+	$no_rt_baru = htmlspecialchars($data['rt']); // no rt baru
+	$no_rw = htmlspecialchars($data['rw']);
+	$nik = htmlspecialchars($data['nik']);
 	$currentDate = date("Y-m-d h:i:sa");
 	
 	$query = "UPDATE rt 
